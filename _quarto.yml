@@ -4,10 +4,10 @@ project:
   
 website:
   page-navigation: true
-  title: "Yujun Lian"
-  site-url: https://lianyujun.github.io
+  title: "Xiaohao Ji"
+  site-url: https://github.com/ji-xiaohao
   favicon: images/site-logo.png
-  repo-url: https://github.com/lianyujun/lianyujun.github.io
+  repo-url: https://github.com/ji-xiaohao/ji-xiaohao.github.io
   repo-actions: [edit, issue]
   
   page-footer:
@@ -22,18 +22,16 @@ website:
     right: 
       - text: "Home"
         href: index.qmd
-      - text: "Publications"
-        href: publications.qmd
-      - text: "Books"
-        href: books.qmd
-      - text: "Blogs"
-        href: blog.qmd
-      - text: "Codes"
-        href: codes.qmd
+      - text: " Machine Learning"
+        href:  Machine Learning.qmd
+      - text: "Deep Learning"
+        href: Deep Learning.qmd
+      - text: "Power BI"
+        href: Power BI.qmd
+      - text: "Paper Reading"
+        href: Paper Reading.qmd
       - text: "中文"
         href: Chinese.qmd
-      - text: "CV"
-        href: CV.pdf
 
 format:
   html:
