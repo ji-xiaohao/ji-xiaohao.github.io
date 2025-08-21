@@ -1,31 +1,33 @@
 ---
-title: "Codes"
+title: "Deep Learning"
 editor: 
   markdown: 
     wrap: 72
 ---
+本板块展示了我在以下方向的部分实践成果：
 
-Many of the links below will take you to content on GitHub
-([my github](https://github.com/arlionn)).
+· KAN 网络探索
 
-- `lianxh`：在 Stata 中快速搜索 [lianxh.cn](https://www.lianxh.cn) 推文并按指定格式输出
-  - 连享会, 2020, [ssc install lianxh：你想要的 Stata 都在这里](https://www.lianxh.cn/details/233.html)
-  - 连享会, 2023, [新版lianxh命令发布了！](https://www.lianxh.cn/details/1296.html)
+基于模拟数据构建分类任务，对结合知识图谱与深度学习的 KAN 网络进行实验，评估其在处理复杂关系和多模态信息方面的表现，探索模型在结构化知识与语义学习上的协同能力。
 
-- `bdiff`：组间系数差异检验
-  - 李烨阳, 2023, [Stata：自己动手做组间系数差异检验-bootstrap-bdiff](https://www.lianxh.cn/details/1286.html).
-  - 连玉君, 2020, [Stata: 如何检验分组回归后的组间系数差异？](https://www.lianxh.cn/details/19.html).
-- `winsor2`：批量缩尾处理
-  - 袁煜玲, 2021, [winsor2：离群值和异常值的缩尾处理](https://www.lianxh.cn/details/562.html).
-- `ihelp` / `wwwhelp`  
-  - 连享会, 2024, [ihelp: 快速打开Stata帮助文件PDF手册](https://www.lianxh.cn/details/1416.html).
-  - Chen Yongli, **Lian Yujun**\*. Browse and cite Stata manuals easily: the `wwwhelp` command. **Stata Journal**, 2024, 24 (1): 161–168. [-PDF-](https://file-lianxh.oss-cn-shenzhen.aliyuncs.com/Refs/LianPub/Chen-Lian-2024-SJ-wwwhelp-ihelp.pdf). 安装：`ssc install ihelp, replace`
-- `getiref`
-  - 连玉君, 2024, [getiref：快速获得文献的引文和PDF原文](https://www.lianxh.cn/details/1382.html).
-- `sftt`：双边随机边界模型
-  - **Lian Yujun**, Chang Liu, Christopher F. Parmeter. Two-tier stochastic frontier analysis using Stata. **Stata Journal**, 2023, 23(1): 197-229. [-Link-](https://journals.sagepub.com/doi/abs/10.1177/1536867X231162033), [-PDF-](https://file.lianxh.cn/Refs/LianPub/Lian-2023-SJ-sftt-Two-tier-SFA.pdf), [Codes & Data](https://gitee.com/arlionn/sftt), [github](https://github.com/arlionn/sftt). 安装：`net install st0705.pkg, all replace` 
-- `hhi5`：赫芬达尔指数
-  - 连享会, 2020, [Stata数据处理：赫芬达尔指数-(hhi5)-命令介绍](https://www.lianxh.cn/details/327.html)
+· 表文融合：关键审计事项识别
 
-- `xtbalance`：非平衡面板 &rarr; 平衡面板
-  - 吴雄, 2020, [Stata数据处理：xtbalance-非平衡面板之转换](https://www.lianxh.cn/details/316.html).
+面向审计文本分析场景，构建“文本+表格”融合框架，将关键审计事项（KAM）描述转化为语义张量，结合深度神经网络实现特征提取与模式识别。该方法提升了对非结构化审计信息的理解能力，增强了模型对风险信号的捕捉精度与可解释性。
+
+&emsp;
+
+
+## 1.kan网络
+本项目通过构建模拟数据，对 KAN 网络进行了探索与实验，旨在验证其在分类任务中的性能表现。KAN 网络作为一种融合知识图谱与深度学习的新型模型架构，在处理复杂语义关系和多模态数据方面展现出显著潜力。
+
+采用模拟数据的优势在于其高度的可控性与灵活性。通过设定明确的生成规则与参数配置，我们能够构建具有清晰特征结构和标签分布的数据集，从而系统地评估模型在不同场景下的行为特性与泛化能力。同时，模拟数据规避了真实数据中常见的隐私与安全问题，使实验过程更加高效、可复现，有利于模型机制的深入分析。
+
+📄相关报告详见：[深度学习——kan分类（模拟数据）.pdf](/docs\pdf\深度学习——kan分类（模拟数据）.pdf)
+
+
+## 2.表文融合
+本项目致力于探索基于深度学习的关键审计事项识别与分析方法。我们提出一种创新的“表文融合”框架，将审计报告中的文本信息与相关表格数据统一建模，通过将关键审计事项描述文本转化为语义张量，并结合深度神经网络进行特征提取与模式识别，实现对关键审计事项的精准捕捉与分类。
+
+该方法不仅提升了对非结构化文本的理解能力，也增强了模型对审计逻辑和风险信号的感知水平。
+
+📄相关报告详见：[深度学习——关键审计事项表文融合模型.pdf](/docs\pdf\深度学习——关键审计事项表文融合模型.pdf)

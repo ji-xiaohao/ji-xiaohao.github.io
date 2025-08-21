@@ -31,7 +31,7 @@ website:
       - text: "Paper Reading"
         href: Paper Reading.qmd
       - text: "中文"
-        href: Chinese.qmd
+        href: Resume.qmd
 
 format:
   html:
