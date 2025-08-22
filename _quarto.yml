@@ -22,7 +22,9 @@ website:
     right: 
       - text: "Home"
         href: index.qmd
-      - text: " Machine Learning"
+      - text: "Resume"
+        href: Resume.qmd
+      - text: "Machine Learning"
         href:  Machine Learning.qmd
       - text: "Deep Learning"
         href: Deep Learning.qmd
@@ -30,8 +32,6 @@ website:
         href: Power BI.qmd
       - text: "Paper Reading"
         href: Paper Reading.qmd
-      - text: "中文"
-        href: Resume.qmd
 
 format:
   html:
