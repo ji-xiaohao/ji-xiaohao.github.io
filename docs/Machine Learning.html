@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Machine Learning – Xiaohao Ji</title>
+<title>机器学习 – Xiaohao Ji</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -91,19 +91,19 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Home</span></a>
+<span class="menu-text">首页</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Resume.html"> 
-<span class="menu-text">Resume</span></a>
+<span class="menu-text">简历</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./Machine Learning.html" aria-current="page"> 
-<span class="menu-text">Machine Learning</span></a>
+<span class="menu-text">机器学习</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Deep Learning.html"> 
-<span class="menu-text">Deep Learning</span></a>
+<span class="menu-text">深度学习</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Power BI.html"> 
@@ -111,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Paper Reading.html"> 
-<span class="menu-text">Paper Reading</span></a>
+<span class="menu-text">文献阅读</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -129,12 +129,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#python分析" id="toc-python分析" class="nav-link active" data-scroll-target="#python分析">1.python分析</a>
+  <li><a href="#python分析" id="toc-python分析" class="nav-link active" data-scroll-target="#python分析">1.Python分析</a>
   <ul class="collapse">
-  <li><a href="#python普利制药财务舞弊分析" id="toc-python普利制药财务舞弊分析" class="nav-link" data-scroll-target="#python普利制药财务舞弊分析">python——普利制药财务舞弊分析</a></li>
-  <li><a href="#python小米数据分析" id="toc-python小米数据分析" class="nav-link" data-scroll-target="#python小米数据分析">python——小米数据分析</a></li>
+  <li><a href="#python普利制药财务舞弊分析" id="toc-python普利制药财务舞弊分析" class="nav-link" data-scroll-target="#python普利制药财务舞弊分析">Python——普利制药财务舞弊分析</a></li>
+  <li><a href="#python小米数据分析" id="toc-python小米数据分析" class="nav-link" data-scroll-target="#python小米数据分析">Python——小米数据分析</a></li>
+  <li><a href="#python多市场日收益交互看板" id="toc-python多市场日收益交互看板" class="nav-link" data-scroll-target="#python多市场日收益交互看板">Python——多市场日收益交互看板</a></li>
   </ul></li>
-  <li><a href="#机器学习项目" id="toc-机器学习项目" class="nav-link" data-scroll-target="#机器学习项目">1.机器学习项目</a>
+  <li><a href="#机器学习项目" id="toc-机器学习项目" class="nav-link" data-scroll-target="#机器学习项目">2.机器学习项目</a>
   <ul class="collapse">
   <li><a href="#机器学习成本管理模型" id="toc-机器学习成本管理模型" class="nav-link" data-scroll-target="#机器学习成本管理模型">机器学习——成本管理模型</a></li>
   <li><a href="#机器学习股权特征与企业市场价值" id="toc-机器学习股权特征与企业市场价值" class="nav-link" data-scroll-target="#机器学习股权特征与企业市场价值">机器学习——股权特征与企业市场价值</a></li>
@@ -149,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Machine Learning</h1>
+<h1 class="title">机器学习</h1>
 </div>
 
 
@@ -173,20 +174,25 @@ ul.task-list li input[type="checkbox"] {
 <p>基于 A 股市场公司数据，结合 XGBoost、GBDT、Lasso 等机器学习模型，系统研究企业成本结构、股权特征、审计意见识别及估值差异等实际问题，注重模型在真实业务场景中的可解释性与应用价值。</p>
 <p> </p>
 <section id="python分析" class="level2">
-<h2 class="anchored" data-anchor-id="python分析">1.python分析</h2>
+<h2 class="anchored" data-anchor-id="python分析">1.Python分析</h2>
 <section id="python普利制药财务舞弊分析" class="level3">
-<h3 class="anchored" data-anchor-id="python普利制药财务舞弊分析">python——普利制药财务舞弊分析</h3>
+<h3 class="anchored" data-anchor-id="python普利制药财务舞弊分析">Python——普利制药财务舞弊分析</h3>
 <p>本项目基于叶钦华等（2022）发表于《会计研究》的论文《财务舞弊识别框架构建——基于会计信息系统论及大数据视角》，借助 Python 对普利制药的财务数据进行系统性分析。通过构建盈利能力、现金流异常、关联交易等关键指标，尝试从数据中捕捉潜在的风险信号，综合评估该企业的财务健康状况与舞弊风险。</p>
 <p>📄相关分析报告详见：<a href="html\Python_普利制药财务舞弊分析.html">Python_普利制药财务舞弊分析.html</a></p>
 </section>
 <section id="python小米数据分析" class="level3">
-<h3 class="anchored" data-anchor-id="python小米数据分析">python——小米数据分析</h3>
+<h3 class="anchored" data-anchor-id="python小米数据分析">Python——小米数据分析</h3>
 <p>本项目运用 Python 对小米集团的财务报表数据进行全面分析，并通过可视化手段动态呈现其关键财务指标的演变趋势与当前状态。研究重点包括资本结构、融资策略及财务风险水平等方面，旨在全面评估企业的财务表现与潜在风险。</p>
 <p>📄相关分析报告详见：<a href="html\Python_小米数据分析.html">Python_小米数据分析.html</a></p>
 </section>
+<section id="python多市场日收益交互看板" class="level3">
+<h3 class="anchored" data-anchor-id="python多市场日收益交互看板">Python——多市场日收益交互看板</h3>
+<p>本项目旨在展示运用 Python 高级可视化库 Plotly 进行金融数据分析的专业能力。项目基于 CSMAR 数据库提供的“日市场回报率”数据，对多个主要市场（包括上证A股、深证A股、北证A股、创业板、科创板等）的日收益率展开了系统性与交互式的可视化探索。</p>
+<p>📄相关分析报告详见：<a href="html\Python_多市场日收益交互看板.html">Python_多市场日收益交互看板.html</a></p>
+</section>
 </section>
 <section id="机器学习项目" class="level2">
-<h2 class="anchored" data-anchor-id="机器学习项目">1.机器学习项目</h2>
+<h2 class="anchored" data-anchor-id="机器学习项目">2.机器学习项目</h2>
 <section id="机器学习成本管理模型" class="level3">
 <h3 class="anchored" data-anchor-id="机器学习成本管理模型">机器学习——成本管理模型</h3>
 <p>基于2018年至2024年沪深京A股上市公司的年度财务数据，本文对企业成本与费用结构展开建模分析。在线性回归与梯度提升决策树（GBDT）的对比实验中，重点探索不同模型在拟合企业成本行为中的表现差异，初步评估各类算法在解释费用结构变化方面的适用性。</p>

@@ -20,17 +20,17 @@ website:
     background: "#A9CCE3"
     search: true
     right: 
-      - text: "Home"
+      - text: "首页"
         href: index.qmd
-      - text: "Resume"
+      - text: "简历"
         href: Resume.qmd
-      - text: "Machine Learning"
+      - text: "机器学习"
         href:  Machine Learning.qmd
-      - text: "Deep Learning"
+      - text: "深度学习"
         href: Deep Learning.qmd
       - text: "Power BI"
         href: Power BI.qmd
-      - text: "Paper Reading"
+      - text: "文献阅读"
         href: Paper Reading.qmd
 
 format:

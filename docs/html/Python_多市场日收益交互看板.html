@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>深度学习_kan分类（模拟数据）</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Python_多市场日收益交互看板</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7312,6 +7312,7 @@ a.anchor-link {
                     processEnvironments: true
                 },
                 displayAlign: 'center',
+                messageStyle: 'none',
                 CommonHTML: {
                     linebreaks: {
                     automatic: true
@@ -7510,19 +7511,19 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=de5ce94c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>通过利用模拟数据对KAN网络进行了探索和实验，以验证其在分类任务中的表现。KAN网络作为一种结合了知识图谱和深度学习技术的模型，在处理复杂关系和多模态数据方面展现出巨大的潜力。</p>
-<p>模拟数据的优势在于其可控性和灵活性。通过设计特定的规则和参数，我们可以生成具有明确特征和标签的数据集，从而更好地理解模型在不同条件下的行为和性能。此外，模拟数据还可以帮助我们避免实际数据可能带来的隐私和安全问题，使得实验过程更加便捷和高效。</p>
+<p>本项目旨在展示运用 Python 高级可视化库 Plotly 进行金融数据分析的专业能力。项目基于 CSMAR 数据库提供的“日市场回报率”数据，对多个主要市场（包括上证A股、深证A股、北证A股、创业板、科创板等）的日收益率展开了系统性与交互式的可视化探索。</p>
+<p>通过 plotly.express 与 plotly.graph_objects，构建了包括多市场收益率走势对比、分布特征箱线图、月度平均收益热力图（上证、北证、深证）等在内的多个交互式图表。</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=deb18a65">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7532,40 +7533,39 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0100e906">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">from</span> <span class="nn">kan</span> <span class="kn">import</span> <span class="n">KAN</span>
-
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="w"> </span>python<span class="w"> </span>--version
+<span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>findstr<span class="w"> </span><span class="s2">"pandas  numpy  plotly"</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Python 3.13.2
+numpy                         2.2.3
+numpydoc                      1.9.0
+pandas                        2.3.0
+plotly                        6.3.0
+</pre>
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="%E7%94%9F%E6%88%90%E6%A8%A1%E6%8B%9F%E6%95%B0%E6%8D%AE">生成模拟数据<a class="anchor-link" href="#%E7%94%9F%E6%88%90%E6%A8%A1%E6%8B%9F%E6%95%B0%E6%8D%AE">¶</a></h1>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=72fed193">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7573,23 +7573,67 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">plotly.subplots</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_subplots</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=13287123">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.core.interactiveshell</span><span class="w"> </span><span class="kn">import</span> <span class="n">InteractiveShell</span>
+<span class="n">InteractiveShell</span><span class="o">.</span><span class="n">ast_node_interactivity</span> <span class="o">=</span> <span class="s2">"all"</span>
 
-<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1000</span>  
-<span class="n">n_features</span> <span class="o">=</span> <span class="mi">20</span>   
-<span class="n">n_classes</span> <span class="o">=</span> <span class="mi">2</span>     
-<span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span> 
 
-<span class="c1"># 生成数据</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span>
-                           <span class="n">n_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">,</span>
-                           <span class="n">n_classes</span><span class="o">=</span><span class="n">n_classes</span><span class="p">,</span>
-                           <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">)</span>
-
-<span class="c1"># 将数据转换为DataFrame查看</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">'feature_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">'</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_features</span><span class="p">)])</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">'target'</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
-
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">"ignore"</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">UserWarning</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="s2">"openpyxl"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=40ad24a8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86">数据处理<a class="anchor-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=214cf81b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE">导入数据<a class="anchor-link" href="#%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1c191a2e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">"rawdata</span><span class="se">\\</span><span class="s2">TRD_Dalym.xlsx"</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -7601,7 +7645,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -7621,258 +7665,50 @@ a.anchor-link {
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>feature_0</th>
-<th>feature_1</th>
-<th>feature_2</th>
-<th>feature_3</th>
-<th>feature_4</th>
-<th>feature_5</th>
-<th>feature_6</th>
-<th>feature_7</th>
-<th>feature_8</th>
-<th>feature_9</th>
-<th>...</th>
-<th>feature_11</th>
-<th>feature_12</th>
-<th>feature_13</th>
-<th>feature_14</th>
-<th>feature_15</th>
-<th>feature_16</th>
-<th>feature_17</th>
-<th>feature_18</th>
-<th>feature_19</th>
-<th>target</th>
+<th>Markettype</th>
+<th>Trddt</th>
+<th>Dretwdos</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th>0</th>
-<td>-0.669356</td>
-<td>-1.495778</td>
-<td>-0.870766</td>
-<td>1.141831</td>
-<td>0.021606</td>
-<td>1.730630</td>
-<td>-1.251698</td>
-<td>0.289305</td>
-<td>0.357163</td>
-<td>-0.196811</td>
-<td>...</td>
-<td>0.154850</td>
-<td>-0.219970</td>
-<td>-0.739137</td>
-<td>1.802012</td>
-<td>1.634606</td>
-<td>-0.938180</td>
-<td>-1.267337</td>
-<td>-1.276334</td>
-<td>1.016643</td>
-<td>1</td>
+<td>2</td>
+<td>2019-01-02</td>
+<td>-0.004236</td>
 </tr>
 <tr>
 <th>1</th>
-<td>0.093372</td>
-<td>0.785848</td>
-<td>0.105754</td>
-<td>1.272354</td>
-<td>-0.846316</td>
-<td>-0.979093</td>
-<td>1.263707</td>
-<td>0.264020</td>
-<td>2.411677</td>
-<td>-0.960046</td>
-<td>...</td>
-<td>0.199810</td>
-<td>0.288724</td>
-<td>0.732492</td>
-<td>-0.872002</td>
-<td>-1.654887</td>
-<td>-1.130204</td>
-<td>-0.122709</td>
-<td>0.693431</td>
-<td>0.911363</td>
-<td>0</td>
+<td>4</td>
+<td>2019-01-02</td>
+<td>-0.008378</td>
 </tr>
 <tr>
 <th>2</th>
-<td>-0.905797</td>
-<td>-0.608341</td>
-<td>0.295141</td>
-<td>0.943716</td>
-<td>0.092936</td>
-<td>1.370397</td>
-<td>-0.064772</td>
-<td>0.287273</td>
-<td>-0.533004</td>
-<td>-0.032504</td>
-<td>...</td>
-<td>-0.510064</td>
-<td>-0.868768</td>
-<td>-0.598279</td>
-<td>0.019832</td>
-<td>0.613460</td>
-<td>-1.779439</td>
-<td>0.830498</td>
-<td>-0.737332</td>
-<td>-0.578212</td>
-<td>1</td>
+<td>8</td>
+<td>2019-01-02</td>
+<td>-0.003053</td>
 </tr>
 <tr>
 <th>3</th>
-<td>-0.585793</td>
-<td>0.389279</td>
-<td>0.698816</td>
-<td>0.436236</td>
-<td>-0.315082</td>
-<td>0.459505</td>
-<td>1.448820</td>
-<td>0.505558</td>
-<td>-1.440982</td>
-<td>-1.134020</td>
-<td>...</td>
-<td>1.466783</td>
-<td>0.678728</td>
-<td>-1.190917</td>
-<td>-1.442381</td>
-<td>-0.929136</td>
-<td>-0.221600</td>
-<td>-0.346772</td>
-<td>0.034246</td>
-<td>-1.040199</td>
 <td>1</td>
+<td>2019-01-02</td>
+<td>-0.011865</td>
 </tr>
 <tr>
 <th>4</th>
-<td>1.146441</td>
-<td>0.515579</td>
-<td>-1.222895</td>
-<td>-0.396230</td>
-<td>-1.293508</td>
-<td>-0.352428</td>
-<td>0.071254</td>
-<td>1.239584</td>
-<td>1.007133</td>
-<td>-1.479444</td>
-<td>...</td>
-<td>-0.918127</td>
-<td>0.604121</td>
-<td>1.068379</td>
-<td>-0.882271</td>
-<td>2.303639</td>
-<td>-0.973379</td>
-<td>1.259233</td>
-<td>0.360015</td>
-<td>1.920368</td>
-<td>0</td>
+<td>16</td>
+<td>2019-01-02</td>
+<td>-0.009416</td>
 </tr>
 </tbody>
 </table>
-<p>5 rows × 21 columns</p>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="%E5%AE%9A%E4%B9%89%E8%AE%BE%E5%A4%87">定义设备<a class="anchor-link" href="#%E5%AE%9A%E4%B9%89%E8%AE%BE%E5%A4%87">¶</a></h1>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">'cpu'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>cuda
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="%E5%88%92%E5%88%86%E6%95%B0%E6%8D%AE%E9%9B%86">划分数据集<a class="anchor-link" href="#%E5%88%92%E5%88%86%E6%95%B0%E6%8D%AE%E9%9B%86">¶</a></h1>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">"target"</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-                                                    <span class="n">df</span><span class="p">[</span><span class="s2">"target"</span><span class="p">],</span>
-                                                    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.30</span><span class="p">,</span>
-                                                    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">X_val</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_val</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span>
-                                                <span class="n">y_test</span><span class="p">,</span>
-                                                <span class="n">test_size</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
-                                                <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-
-<span class="c1"># Covert data to torch tensor</span>
-<span class="n">train_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-<span class="n">train_label</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-<span class="n">val_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X_val</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-<span class="n">val_label</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">y_val</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-<span class="n">test_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-<span class="n">test_label</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-
-<span class="n">dataset</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">'train_input'</span><span class="p">:</span> <span class="n">train_input</span><span class="p">,</span>
-    <span class="s1">'train_label'</span><span class="p">:</span> <span class="n">train_label</span><span class="p">,</span>
-    <span class="s1">'val_input'</span><span class="p">:</span> <span class="n">val_input</span><span class="p">,</span>
-    <span class="s1">'val_label'</span><span class="p">:</span> <span class="n">val_label</span><span class="p">,</span>
-    <span class="s1">'test_input'</span><span class="p">:</span> <span class="n">test_input</span><span class="p">,</span>
-    <span class="s1">'test_label'</span><span class="p">:</span> <span class="n">test_label</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="%E6%9E%84%E5%BB%BA%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B">构建分类模型<a class="anchor-link" href="#%E6%9E%84%E5%BB%BA%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B">¶</a></h1>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=826dc58e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7880,18 +7716,16 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">KAN</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="p">[</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">grid</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 替换数值为对应的市场名称</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'Markettype'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Markettype'</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="mi">1</span><span class="p">:</span> <span class="s1">'上证A股市场'</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">'深证A股市场'</span><span class="p">,</span> <span class="mi">64</span><span class="p">:</span> <span class="s1">'北证A股市场'</span><span class="p">,</span> 
+                                             <span class="mi">16</span><span class="p">:</span> <span class="s1">'创业板'</span><span class="p">,</span> <span class="mi">32</span><span class="p">:</span> <span class="s1">'科创板'</span><span class="p">})</span>
 
-<span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span>
-<span class="c1"># 准确率</span>
-<span class="k">def</span> <span class="nf">train_acc</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">'train_input'</span><span class="p">]),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">'train_label'</span><span class="p">])</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">dtype</span><span class="p">))</span>
+<span class="c1"># 仅保留特定市场的数据</span>
+<span class="n">markets_to_keep</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'上证A股市场'</span><span class="p">,</span> <span class="s1">'深证A股市场'</span><span class="p">,</span> <span class="s1">'北证A股市场'</span><span class="p">,</span> <span class="s1">'创业板'</span><span class="p">,</span> <span class="s1">'科创板'</span><span class="p">]</span>
+<span class="n">df_filtered</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'Markettype'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">markets_to_keep</span><span class="p">)]</span>
 
-<span class="k">def</span> <span class="nf">test_acc</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">'test_input'</span><span class="p">]),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">'test_label'</span><span class="p">])</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">dtype</span><span class="p">))</span>
-
-<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="s2">"LBFGS"</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">(</span><span class="n">train_acc</span><span class="p">,</span> <span class="n">test_acc</span><span class="p">),</span> <span class="n">loss_fn</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">())</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">'train_acc'</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">results</span><span class="p">[</span><span class="s1">'test_acc'</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">df_filtered</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df_filtered</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'Markettype'</span><span class="p">,</span> <span class="s1">'Trddt'</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7901,65 +7735,82 @@ a.anchor-link {
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>checkpoint directory created: ./model
-saving model version 0.0
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>| train_loss: 2.43e-02 | test_loss: 2.15e+00 | reg: 1.43e+02 | : 100%|█| 20/20 [00:12&lt;00:00,  1.65it</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>saving model version 0.1
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>
-</pre>
-</div>
-</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>(1.0, 0.7944444417953491)</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Markettype</th>
+<th>Trddt</th>
+<th>Dretwdos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>1</th>
+<td>深证A股市场</td>
+<td>2019-01-02</td>
+<td>-0.008378</td>
+</tr>
+<tr>
+<th>3</th>
+<td>上证A股市场</td>
+<td>2019-01-02</td>
+<td>-0.011865</td>
+</tr>
+<tr>
+<th>4</th>
+<td>创业板</td>
+<td>2019-01-02</td>
+<td>-0.009416</td>
+</tr>
+<tr>
+<th>6</th>
+<td>深证A股市场</td>
+<td>2019-01-03</td>
+<td>-0.006489</td>
+</tr>
+<tr>
+<th>8</th>
+<td>上证A股市场</td>
+<td>2019-01-03</td>
+<td>-0.000070</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>C:\Users\Lenovo\AppData\Local\Temp\ipykernel_26484\1491594077.py:10: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_filtered.sort_values(['Markettype', 'Trddt'], inplace=True)
+</pre>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="%E8%AF%84%E4%BC%B0">评估<a class="anchor-link" href="#%E8%AF%84%E4%BC%B0">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="f1">f1<a class="anchor-link" href="#f1">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=457ddb7b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7967,32 +7818,7 @@ saving model version 0.0
 <div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
-
-<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>  <span class="c1"># 确保不会追踪梯度，节省内存和计算资源</span>
-    <span class="c1"># Test dataset evaluation</span>
-    <span class="n">test_preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">test_input</span><span class="p">)</span>
-    <span class="n">test_plabels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">test_preds</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>  <span class="c1"># 转换为类别标签</span>
-    <span class="n">test_labels</span> <span class="o">=</span> <span class="n">test_label</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-
-    <span class="c1"># Train dataset evaluation</span>
-    <span class="n">train_preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">train_input</span><span class="p">)</span>
-    <span class="n">train_plabels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">train_preds</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-    <span class="n">train_labels</span> <span class="o">=</span> <span class="n">train_label</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-
-    <span class="c1"># Validation dataset evaluation</span>
-    <span class="n">val_preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">val_input</span><span class="p">)</span>
-    <span class="n">val_plabels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">val_preds</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-    <span class="n">val_labels</span> <span class="o">=</span> <span class="n">val_label</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-
-<span class="c1"># Evaluate metrics</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Train f1_score:"</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">train_labels</span><span class="p">,</span> <span class="n">train_plabels</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">'weighted'</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Val f1_score:"</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">val_labels</span><span class="p">,</span> <span class="n">val_plabels</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">'weighted'</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Test f1_score:"</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">test_labels</span><span class="p">,</span> <span class="n">test_plabels</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">'weighted'</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_filtered</span><span class="o">.</span><span class="n">dtypes</span>
 </pre></div>
 </div>
 </div>
@@ -8002,29 +7828,18 @@ saving model version 0.0
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Train f1_score: 1.0
-Val f1_score: 0.8164620535714285
-Test f1_score: 0.7946931697916774
-</pre>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>Markettype     object
+Trddt          object
+Dretwdos      float64
+dtype: object</pre>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="%E8%AF%84%E4%BC%B0%E5%87%BD%E6%95%B0">评估函数<a class="anchor-link" href="#%E8%AF%84%E4%BC%B0%E5%87%BD%E6%95%B0">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e1f8ed90">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8032,42 +7847,102 @@ Test f1_score: 0.7946931697916774
 <div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">accuracy_score</span><span class="p">,</span>
-    <span class="n">precision_score</span><span class="p">,</span>
-    <span class="n">recall_score</span><span class="p">,</span>
-    <span class="n">f1_score</span>
-<span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 确保日期列是datetime类型</span>
+<span class="n">df_filtered</span><span class="p">[</span><span class="s1">'Trddt'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_filtered</span><span class="p">[</span><span class="s1">'Trddt'</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>C:\Users\Lenovo\AppData\Local\Temp\ipykernel_26484\831813499.py:2: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
 
-<span class="k">def</span> <span class="nf">scoring_clf</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"accuracy_score:"</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"precision_score:"</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"recall_score:"</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"f1_score:"</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
-
-<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>  <span class="c1"># 确保不会追踪梯度，节省内存和计算资源</span>
-    <span class="c1"># Test dataset evaluation</span>
-    <span class="n">test_preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">test_input</span><span class="p">)</span>
-    <span class="n">test_plabels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">test_preds</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>  <span class="c1"># 转换为类别标签</span>
-    <span class="n">test_labels</span> <span class="o">=</span> <span class="n">test_label</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-
-    <span class="c1"># Train dataset evaluation</span>
-    <span class="n">train_preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">train_input</span><span class="p">)</span>
-    <span class="n">train_plabels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">train_preds</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-    <span class="n">train_labels</span> <span class="o">=</span> <span class="n">train_label</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-
-    <span class="c1"># Validation dataset evaluation</span>
-    <span class="n">val_preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">val_input</span><span class="p">)</span>
-    <span class="n">val_plabels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">val_preds</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-    <span class="n">val_labels</span> <span class="o">=</span> <span class="n">val_label</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-
-
-<span class="n">scoring_clf</span><span class="p">(</span><span class="n">train_labels</span><span class="p">,</span> <span class="n">train_plabels</span><span class="p">)</span>
-<span class="n">scoring_clf</span><span class="p">(</span><span class="n">val_labels</span><span class="p">,</span> <span class="n">val_plabels</span><span class="p">)</span>
-<span class="n">scoring_clf</span><span class="p">(</span><span class="n">test_labels</span><span class="p">,</span> <span class="n">test_plabels</span><span class="p">)</span>
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_filtered['Trddt'] = pd.to_datetime(df_filtered['Trddt'])
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=51ea5974">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="%E5%89%94%E9%99%A4%E7%BC%BA%E5%A4%B1">剔除缺失<a class="anchor-link" href="#%E5%89%94%E9%99%A4%E7%BC%BA%E5%A4%B1">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e07daab2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_filtered</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">df_filtered</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>(6768, 3)</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>Markettype    0
+Trddt         0
+Dretwdos      2
+dtype: int64</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=7e24c72a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_filtered</span> <span class="o">=</span> <span class="n">df_filtered</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">'Dretwdos'</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=088654f1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"✅ 成功加载 </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_filtered</span><span class="p">)</span><span class="si">}</span><span class="s2"> 条记录，涵盖 </span><span class="si">{</span><span class="n">df_filtered</span><span class="p">[</span><span class="s1">'Markettype'</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="si">}</span><span class="s2"> 个市场"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"📊 指数列表："</span><span class="p">,</span> <span class="n">df_filtered</span><span class="p">[</span><span class="s1">'Markettype'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -8080,26 +7955,677 @@ Test f1_score: 0.7946931697916774
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>---------- 
-
-accuracy_score: 1.0
-precision_score: 1.0
-recall_score: 1.0
-f1_score: 1.0
----------- 
-
-accuracy_score: 0.8166666666666667
-precision_score: 0.8181818181818182
-recall_score: 0.7894736842105263
-f1_score: 0.8035714285714286
----------- 
-
-accuracy_score: 0.7944444444444444
-precision_score: 0.8210526315789474
-recall_score: 0.7959183673469388
-f1_score: 0.8082901554404145
+<pre>✅ 成功加载 6766 条记录，涵盖 5 个市场
+📊 指数列表： ['上证A股市场', '创业板', '北证A股市场', '深证A股市场', '科创板']
 </pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b3b596bd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1">描述性统计<a class="anchor-link" href="#%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=551d20c4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_filtered</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Trddt</th>
+<th>Dretwdos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>count</th>
+<td>6766</td>
+<td>6766.000000</td>
+</tr>
+<tr>
+<th>mean</th>
+<td>2022-03-07 15:24:31.711498496</td>
+<td>0.000442</td>
+</tr>
+<tr>
+<th>min</th>
+<td>2019-01-02 00:00:00</td>
+<td>-0.132847</td>
+</tr>
+<tr>
+<th>25%</th>
+<td>2020-10-29 00:00:00</td>
+<td>-0.007981</td>
+</tr>
+<tr>
+<th>50%</th>
+<td>2022-03-21 00:00:00</td>
+<td>0.000145</td>
+</tr>
+<tr>
+<th>75%</th>
+<td>2023-08-09 00:00:00</td>
+<td>0.008163</td>
+</tr>
+<tr>
+<th>max</th>
+<td>2024-12-31 00:00:00</td>
+<td>0.242066</td>
+</tr>
+<tr>
+<th>std</th>
+<td>NaN</td>
+<td>0.018136</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cc21da17">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE">导出数据<a class="anchor-link" href="#%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=f0a49f25">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_filtered</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">'data/df_dretwdos.xlsx'</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=11858b28">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="%E4%BA%A4%E4%BA%92%E5%BC%8F%E8%AE%BE%E8%AE%A1">交互式设计<a class="anchor-link" href="#%E4%BA%A4%E4%BA%92%E5%BC%8F%E8%AE%BE%E8%AE%A1">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b04b177f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE">导入数据<a class="anchor-link" href="#%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e1355b99">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">'data/df_dretwdos.xlsx'</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Markettype</th>
+<th>Trddt</th>
+<th>Dretwdos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>上证A股市场</td>
+<td>2019-01-02</td>
+<td>-0.011865</td>
+</tr>
+<tr>
+<th>1</th>
+<td>上证A股市场</td>
+<td>2019-01-03</td>
+<td>-0.000070</td>
+</tr>
+<tr>
+<th>2</th>
+<td>上证A股市场</td>
+<td>2019-01-04</td>
+<td>0.020097</td>
+</tr>
+<tr>
+<th>3</th>
+<td>上证A股市场</td>
+<td>2019-01-07</td>
+<td>0.006706</td>
+</tr>
+<tr>
+<th>4</th>
+<td>上证A股市场</td>
+<td>2019-01-08</td>
+<td>-0.002640</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>Index(['Markettype', 'Trddt', 'Dretwdos'], dtype='object')</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=887f8d67">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="%E5%A4%9A%E5%B8%82%E5%9C%BA%E6%97%A5%E6%94%B6%E7%9B%8A%E7%8E%87%E8%B5%B0%E5%8A%BF%E5%AF%B9%E6%AF%94">多市场日收益率走势对比<a class="anchor-link" href="#%E5%A4%9A%E5%B8%82%E5%9C%BA%E6%97%A5%E6%94%B6%E7%9B%8A%E7%8E%87%E8%B5%B0%E5%8A%BF%E5%AF%B9%E6%AF%94">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=47c01463">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %% 图1：多市场日收益率走势对比图</span>
+
+<span class="n">fig1</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">'Trddt'</span><span class="p">,</span>                   
+    <span class="n">y</span><span class="o">=</span><span class="s1">'Dretwdos'</span><span class="p">,</span>                
+    <span class="n">color</span><span class="o">=</span><span class="s1">'Markettype'</span><span class="p">,</span>          
+    <span class="n">title</span><span class="o">=</span><span class="s2">"📈 各市场日收益率走势对比"</span><span class="p">,</span>  
+    <span class="n">labels</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">"Trddt"</span><span class="p">:</span> <span class="s2">"交易日期"</span><span class="p">,</span>        
+        <span class="s2">"Dretwdos"</span><span class="p">:</span> <span class="s2">"日收益率"</span><span class="p">,</span>     
+        <span class="s2">"Markettype"</span><span class="p">:</span> <span class="s2">"市场类型"</span>    
+    <span class="p">},</span>
+    <span class="n">hover_data</span><span class="o">=</span><span class="p">{</span><span class="s2">"Dretwdos"</span><span class="p">:</span> <span class="s2">":.4f"</span><span class="p">}</span>  
+<span class="p">)</span>
+
+<span class="n">fig1</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">hovermode</span><span class="o">=</span><span class="s2">"x unified"</span><span class="p">,</span>            
+    <span class="n">legend_title_text</span><span class="o">=</span><span class="s2">"市场类型"</span><span class="p">,</span>      
+    <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">"交易日期"</span><span class="p">,</span>           
+    <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">"日收益率"</span><span class="p">,</span>            
+    <span class="n">template</span><span class="o">=</span><span class="s2">"plotly_white"</span>
+<span class="p">)</span>
+
+<span class="n">fig1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=49072b32">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="%E6%97%A5%E6%94%B6%E7%9B%8A%E7%8E%87%E5%88%86%E5%B8%83%E5%AF%B9%E6%AF%94%E2%80%94%E2%80%94%E7%AE%B1%E7%BA%BF%E5%9B%BE">日收益率分布对比——箱线图<a class="anchor-link" href="#%E6%97%A5%E6%94%B6%E7%9B%8A%E7%8E%87%E5%88%86%E5%B8%83%E5%AF%B9%E6%AF%94%E2%80%94%E2%80%94%E7%AE%B1%E7%BA%BF%E5%9B%BE">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bb4e096a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %% 图2：日收益率分布对比（箱线图）</span>
+
+<span class="n">fig2</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">'Markettype'</span><span class="p">,</span>          
+    <span class="n">y</span><span class="o">=</span><span class="s1">'Dretwdos'</span><span class="p">,</span>           
+    <span class="n">color</span><span class="o">=</span><span class="s1">'Markettype'</span><span class="p">,</span>      
+    <span class="n">title</span><span class="o">=</span><span class="s2">"📊 各市场日收益率分布对比（波动性分析）"</span><span class="p">,</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">"Dretwdos"</span><span class="p">:</span> <span class="s2">"日收益率"</span><span class="p">,</span> 
+        <span class="s2">"Markettype"</span><span class="p">:</span> <span class="s2">"市场类型"</span>
+    <span class="p">},</span>
+    <span class="n">points</span><span class="o">=</span><span class="s1">'outliers'</span>  
+<span class="p">)</span>
+
+<span class="n">fig2</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">"市场类型"</span><span class="p">,</span>
+    <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">"日收益率"</span><span class="p">,</span>
+    <span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">template</span><span class="o">=</span><span class="s2">"ggplot2"</span>
+<span class="p">)</span>
+
+<span class="n">fig2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3298f124">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="%E5%B9%B4%E5%BA%A6%E6%9C%88%E5%BA%A6%E5%B9%B3%E5%9D%87%E6%94%B6%E7%9B%8A%E7%8E%87%E2%80%94%E2%80%94%E7%83%AD%E5%8A%9B%E5%9B%BE">年度月度平均收益率——热力图<a class="anchor-link" href="#%E5%B9%B4%E5%BA%A6%E6%9C%88%E5%BA%A6%E5%B9%B3%E5%9D%87%E6%94%B6%E7%9B%8A%E7%8E%87%E2%80%94%E2%80%94%E7%83%AD%E5%8A%9B%E5%9B%BE">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e7a40ea4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="%E4%B8%8A%E8%AF%81A%E8%82%A1%E5%B8%82%E5%9C%BA">上证A股市场<a class="anchor-link" href="#%E4%B8%8A%E8%AF%81A%E8%82%A1%E5%B8%82%E5%9C%BA">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=457f03bf">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">'year'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Trddt'</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'month'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Trddt'</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+
+<span class="n">monthly_ret</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Markettype'</span><span class="p">,</span> <span class="s1">'year'</span><span class="p">,</span> <span class="s1">'month'</span><span class="p">])[</span><span class="s1">'Dretwdos'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># 上证A股市场</span>
+<span class="n">target_index</span> <span class="o">=</span> <span class="s1">'上证A股市场'</span>
+<span class="n">df_plot</span> <span class="o">=</span> <span class="n">monthly_ret</span><span class="p">[</span><span class="n">monthly_ret</span><span class="p">[</span><span class="s1">'Markettype'</span><span class="p">]</span> <span class="o">==</span> <span class="n">target_index</span><span class="p">]</span>
+
+<span class="n">fig3</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">density_heatmap</span><span class="p">(</span>
+    <span class="n">df_plot</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">'month'</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">'year'</span><span class="p">,</span>
+    <span class="n">z</span><span class="o">=</span><span class="s1">'Dretwdos'</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">"🔥 </span><span class="si">{</span><span class="n">target_index</span><span class="si">}</span><span class="s2"> 月度平均收益率热力图"</span><span class="p">,</span>
+    <span class="n">color_continuous_scale</span><span class="o">=</span><span class="s2">"RdYlGn"</span><span class="p">,</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s2">"month"</span><span class="p">:</span> <span class="s2">"月份"</span><span class="p">,</span> <span class="s2">"year"</span><span class="p">:</span> <span class="s2">"年份"</span><span class="p">,</span> <span class="s2">"Dretwdos"</span><span class="p">:</span> <span class="s2">"平均日收益率"</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">fig3</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span>
+    <span class="n">zmin</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">zmax</span><span class="o">=</span><span class="mf">0.05</span>
+<span class="p">)</span>
+<span class="n">fig3</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s2">"seaborn"</span><span class="p">)</span>
+<span class="n">fig3</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f6822cc9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="%E5%8C%97%E8%AF%81A%E8%82%A1%E5%B8%82%E5%9C%BA">北证A股市场<a class="anchor-link" href="#%E5%8C%97%E8%AF%81A%E8%82%A1%E5%B8%82%E5%9C%BA">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=13065d1b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">'year'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Trddt'</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'month'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Trddt'</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+
+<span class="n">monthly_ret</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Markettype'</span><span class="p">,</span> <span class="s1">'year'</span><span class="p">,</span> <span class="s1">'month'</span><span class="p">])[</span><span class="s1">'Dretwdos'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># 北证A股市场</span>
+<span class="n">target_index</span> <span class="o">=</span> <span class="s1">'北证A股市场'</span>
+<span class="n">df_plot</span> <span class="o">=</span> <span class="n">monthly_ret</span><span class="p">[</span><span class="n">monthly_ret</span><span class="p">[</span><span class="s1">'Markettype'</span><span class="p">]</span> <span class="o">==</span> <span class="n">target_index</span><span class="p">]</span>
+
+<span class="n">fig4</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">density_heatmap</span><span class="p">(</span>
+    <span class="n">df_plot</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">'month'</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">'year'</span><span class="p">,</span>
+    <span class="n">z</span><span class="o">=</span><span class="s1">'Dretwdos'</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">"🔥 </span><span class="si">{</span><span class="n">target_index</span><span class="si">}</span><span class="s2"> 月度平均收益率热力图"</span><span class="p">,</span>
+    <span class="n">color_continuous_scale</span><span class="o">=</span><span class="s2">"RdYlGn"</span><span class="p">,</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s2">"month"</span><span class="p">:</span> <span class="s2">"月份"</span><span class="p">,</span> <span class="s2">"year"</span><span class="p">:</span> <span class="s2">"年份"</span><span class="p">,</span> <span class="s2">"Dretwdos"</span><span class="p">:</span> <span class="s2">"平均日收益率"</span><span class="p">}</span>
+<span class="p">)</span>
+
+
+<span class="n">fig4</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span>
+    <span class="n">zmin</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">zmax</span><span class="o">=</span><span class="mf">0.05</span>
+<span class="p">)</span>
+<span class="n">fig4</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s2">"seaborn"</span><span class="p">)</span>
+<span class="n">fig4</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6165e77a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="%E6%B7%B1%E8%AF%81A%E8%82%A1%E5%B8%82%E5%9C%BA">深证A股市场<a class="anchor-link" href="#%E6%B7%B1%E8%AF%81A%E8%82%A1%E5%B8%82%E5%9C%BA">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=edb225a2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">'year'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Trddt'</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'month'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Trddt'</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+
+<span class="n">monthly_ret</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Markettype'</span><span class="p">,</span> <span class="s1">'year'</span><span class="p">,</span> <span class="s1">'month'</span><span class="p">])[</span><span class="s1">'Dretwdos'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># 深证A股市场</span>
+<span class="n">target_index</span> <span class="o">=</span> <span class="s1">'深证A股市场'</span>
+<span class="n">df_plot</span> <span class="o">=</span> <span class="n">monthly_ret</span><span class="p">[</span><span class="n">monthly_ret</span><span class="p">[</span><span class="s1">'Markettype'</span><span class="p">]</span> <span class="o">==</span> <span class="n">target_index</span><span class="p">]</span>
+
+<span class="n">fig5</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">density_heatmap</span><span class="p">(</span>
+    <span class="n">df_plot</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">'month'</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">'year'</span><span class="p">,</span>
+    <span class="n">z</span><span class="o">=</span><span class="s1">'Dretwdos'</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">"🔥 </span><span class="si">{</span><span class="n">target_index</span><span class="si">}</span><span class="s2"> 月度平均收益率热力图"</span><span class="p">,</span>
+    <span class="n">color_continuous_scale</span><span class="o">=</span><span class="s2">"RdYlGn"</span><span class="p">,</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s2">"month"</span><span class="p">:</span> <span class="s2">"月份"</span><span class="p">,</span> <span class="s2">"year"</span><span class="p">:</span> <span class="s2">"年份"</span><span class="p">,</span> <span class="s2">"Dretwdos"</span><span class="p">:</span> <span class="s2">"平均日收益率"</span><span class="p">}</span>
+<span class="p">)</span>
+
+
+<span class="n">fig5</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span>
+    <span class="n">zmin</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">zmax</span><span class="o">=</span><span class="mf">0.05</span>
+<span class="p">)</span>
+<span class="n">fig5</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s2">"seaborn"</span><span class="p">)</span>
+<span class="n">fig5</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1d771496">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="%E7%B4%AF%E8%AE%A1%E6%94%B6%E7%9B%8A%E7%8E%87%E4%B8%8E%E6%B3%A2%E5%8A%A8%E7%8E%87%E2%80%94%E2%80%94%E5%8F%8C%E8%BD%B4%E5%9B%BE">累计收益率与波动率——双轴图<a class="anchor-link" href="#%E7%B4%AF%E8%AE%A1%E6%94%B6%E7%9B%8A%E7%8E%87%E4%B8%8E%E6%B3%A2%E5%8A%A8%E7%8E%87%E2%80%94%E2%80%94%E5%8F%8C%E8%BD%B4%E5%9B%BE">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e05461a1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">rolling_vol</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'Markettype'</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'Trddt'</span><span class="p">)[</span><span class="s1">'Dretwdos'</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'volatility'</span><span class="p">)</span>
+
+<span class="n">df_with_vol</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">rolling_vol</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">'Markettype'</span><span class="p">,</span> <span class="s1">'Trddt'</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">'left'</span><span class="p">)</span>
+
+<span class="c1"># 科创板</span>
+<span class="n">symbol</span> <span class="o">=</span> <span class="s2">"科创板"</span>  
+<span class="n">df_single</span> <span class="o">=</span> <span class="n">df_with_vol</span><span class="p">[</span><span class="n">df_with_vol</span><span class="p">[</span><span class="s1">'Markettype'</span><span class="p">]</span> <span class="o">==</span> <span class="n">symbol</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">df_single</span><span class="p">[</span><span class="s1">'cumulative_return'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">df_single</span><span class="p">[</span><span class="s1">'Dretwdos'</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="n">fig6</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">specs</span><span class="o">=</span><span class="p">[[{</span><span class="s2">"secondary_y"</span><span class="p">:</span> <span class="kc">True</span><span class="p">}]])</span>
+
+<span class="n">fig6</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">df_single</span><span class="p">[</span><span class="s1">'Trddt'</span><span class="p">],</span> 
+        <span class="n">y</span><span class="o">=</span><span class="n">df_single</span><span class="p">[</span><span class="s1">'cumulative_return'</span><span class="p">],</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"累计收益率"</span><span class="p">,</span>
+        <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'blue'</span><span class="p">)</span>
+    <span class="p">),</span>
+    <span class="n">secondary_y</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">fig6</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">df_single</span><span class="p">[</span><span class="s1">'Trddt'</span><span class="p">],</span> 
+        <span class="n">y</span><span class="o">=</span><span class="n">df_single</span><span class="p">[</span><span class="s1">'volatility'</span><span class="p">],</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"20日滚动波动率"</span><span class="p">,</span>
+        <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="s1">'dot'</span><span class="p">)</span>
+    <span class="p">),</span>
+    <span class="n">secondary_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">fig6</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">"📊 </span><span class="si">{</span><span class="n">symbol</span><span class="si">}</span><span class="s2">：累计收益与波动率关系图"</span><span class="p">,</span>
+    <span class="n">template</span><span class="o">=</span><span class="s2">"plotly_dark"</span>
+<span class="p">)</span>
+<span class="n">fig6</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s2">"日期"</span><span class="p">)</span>
+<span class="n">fig6</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s2">"累计收益率"</span><span class="p">,</span> <span class="n">secondary_y</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">fig6</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s2">"波动率 (20日标准差)"</span><span class="p">,</span> <span class="n">secondary_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig6</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>C:\Users\Lenovo\AppData\Local\Temp\ipykernel_26484\923371912.py:1: FutureWarning:
+
+DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 </div>
 </div>
 </div>
