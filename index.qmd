@@ -1,5 +1,5 @@
 ---
-title: "Xiaohao Ji"
+title: "吉小浩"
 image: images\jixiaohao.jpg
 about:
   id: hero-heading
