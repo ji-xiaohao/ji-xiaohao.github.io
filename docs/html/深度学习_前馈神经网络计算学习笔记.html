@@ -7528,9 +7528,9 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><img alt="前馈神经网络的基本结构" src="screenshot/fig3-1.png"/></p>
+<p><img alt="前馈神经网络的基本结构" src="https://i.postimg.cc/D0Y3kNNf/fig3-1.png"/></p>
 <p>使用一些数字计算，图3-2所示为初始的权重、偏置和训练输入 / 输出。</p>
-<p><img alt="设置了具体权值的神经网络结构图" src="screenshot/fig3-2.png"/></p>
+<p><img alt="设置了具体权值的神经网络结构图" src="https://i.postimg.cc/Vvv2RRkx/fig3-2.png"/></p>
 <p>反向传播的目标是优化权重，以便神经网络可以学习如何正确映射任意输入到输出。本节的其余部分，将使用单个训练集：给定输入0.05和0.10，希望神经网络输出0.01和0.99。</p>
 <p>首先，让我们看看神经网络在给定权重和偏置时，对于输入0.05和0.10，预测的是什么。为此，将通过网络向前馈送这些输入。</p>
 <p>计算出每个隐藏层神经元的总净输入，使用激活函数压缩总净输入（这里使用逻辑函数），然后用输出层神经元重复该过程。</p>
@@ -7621,7 +7621,7 @@ $$</p>
 \frac{\partial E_{\text{total}}}{\partial w_5} = \frac{\partial E_{\text{total}}}{\partial \text{out}_{o_1}} \cdot \frac{\partial \text{out}_{o_1}}{\partial \text{net}_{o_1}} \cdot \frac{\partial \text{net}_{o_1}}{\partial w_5}
 $$</p>
 <hr/>
-<h3 id="%E5%9B%BE3-3%EF%BC%9A$-E_%7B%5Ctext%7Btotal%7D%7D-$-%E5%AF%B9-$-w_5-$-%E6%B1%82%E5%81%8F%E5%AF%BC%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96">图3-3：$ E_{\text{total}} $ 对 $ w_5 $ 求偏导的可视化<a class="anchor-link" href="#%E5%9B%BE3-3%EF%BC%9A$-E_%7B%5Ctext%7Btotal%7D%7D-$-%E5%AF%B9-$-w_5-$-%E6%B1%82%E5%81%8F%E5%AF%BC%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96">¶</a></h3><p><img alt="图3-3 $ E_{\text{total}} $ 对 $ w_5 $ 求偏导" src="screenshot/fig3-3.png"/></p>
+<h3 id="%E5%9B%BE3-3%EF%BC%9A$-E_%7B%5Ctext%7Btotal%7D%7D-$-%E5%AF%B9-$-w_5-$-%E6%B1%82%E5%81%8F%E5%AF%BC%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96">图3-3：$ E_{\text{total}} $ 对 $ w_5 $ 求偏导的可视化<a class="anchor-link" href="#%E5%9B%BE3-3%EF%BC%9A$-E_%7B%5Ctext%7Btotal%7D%7D-$-%E5%AF%B9-$-w_5-$-%E6%B1%82%E5%81%8F%E5%AF%BC%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96">¶</a></h3><p><img alt="图3-3 $ E_{\text{total}} $ 对 $ w_5 $ 求偏导" src="https://i.postimg.cc/NMzdgwQn/fig3-3.png"/></p>
 <blockquote>
 <p><strong>图3-3</strong> $ E_{\text{total}} $ 对 $ w_5 $ 求偏导数<br/>
 展示了从输出层到权重 $ w_5 $ 的误差传播路径。</p>
@@ -7761,7 +7761,7 @@ $$</p>
 <li>$ \frac{\partial \text{net}_{h_1}}{\partial w_1} $ 是净输入对权重的敏感度。</li>
 </ul>
 <hr/>
-<h3 id="4.-%E5%9B%BE3-4%EF%BC%9A$-E_%7B%5Ctext%7Btotal%7D%7D-$-%E5%AF%B9-$-w_1-$-%E6%B1%82%E5%81%8F%E5%AF%BC%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96">4. 图3-4：$ E_{\text{total}} $ 对 $ w_1 $ 求偏导的可视化<a class="anchor-link" href="#4.-%E5%9B%BE3-4%EF%BC%9A$-E_%7B%5Ctext%7Btotal%7D%7D-$-%E5%AF%B9-$-w_1-$-%E6%B1%82%E5%81%8F%E5%AF%BC%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96">¶</a></h3><p><img alt="图3-4 $ E_{\text{total}} $ 对 $ w_1 $ 求偏导" src="screenshot/fig3-4.png"/></p>
+<h3 id="4.-%E5%9B%BE3-4%EF%BC%9A$-E_%7B%5Ctext%7Btotal%7D%7D-$-%E5%AF%B9-$-w_1-$-%E6%B1%82%E5%81%8F%E5%AF%BC%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96">4. 图3-4：$ E_{\text{total}} $ 对 $ w_1 $ 求偏导的可视化<a class="anchor-link" href="#4.-%E5%9B%BE3-4%EF%BC%9A$-E_%7B%5Ctext%7Btotal%7D%7D-$-%E5%AF%B9-$-w_1-$-%E6%B1%82%E5%81%8F%E5%AF%BC%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96">¶</a></h3><p><img alt="图3-4 $ E_{\text{total}} $ 对 $ w_1 $ 求偏导" src="https://i.postimg.cc/V5y4CBrB/fig3-4.png"/></p>
 <blockquote>
 <p><strong>图3-4</strong> $ E_{\text{total}} $ 对 $ w_1 $ 求偏导数<br/>
 展示了从输出层误差回传至隐藏层权重 $ w_1 $ 的路径。</p>
