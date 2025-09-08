@@ -7312,6 +7312,7 @@ a.anchor-link {
                     processEnvironments: true
                 },
                 displayAlign: 'center',
+                messageStyle: 'none',
                 CommonHTML: {
                     linebreaks: {
                     automatic: true
@@ -7543,36 +7544,46 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="%E5%89%8D%E5%90%91%E4%BC%A0%E6%92%AD%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B">前向传播计算过程<a class="anchor-link" href="#%E5%89%8D%E5%90%91%E4%BC%A0%E6%92%AD%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B">¶</a></h2><h3 id="%E8%AE%A1%E7%AE%97%E9%9A%90%E8%97%8F%E5%B1%82%E7%A5%9E%E7%BB%8F%E5%85%83-$-h_1-$-%E7%9A%84%E6%80%BB%E5%87%80%E8%BE%93%E5%85%A5%EF%BC%9A">计算隐藏层神经元 $ h_1 $ 的总净输入：<a class="anchor-link" href="#%E8%AE%A1%E7%AE%97%E9%9A%90%E8%97%8F%E5%B1%82%E7%A5%9E%E7%BB%8F%E5%85%83-$-h_1-$-%E7%9A%84%E6%80%BB%E5%87%80%E8%BE%93%E5%85%A5%EF%BC%9A">¶</a></h3>$$
+<h2 id="%E5%89%8D%E5%90%91%E4%BC%A0%E6%92%AD%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B">前向传播计算过程<a class="anchor-link" href="#%E5%89%8D%E5%90%91%E4%BC%A0%E6%92%AD%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B">¶</a></h2><h3 id="%E8%AE%A1%E7%AE%97%E9%9A%90%E8%97%8F%E5%B1%82%E7%A5%9E%E7%BB%8F%E5%85%83-$-h_1-$-%E7%9A%84%E6%80%BB%E5%87%80%E8%BE%93%E5%85%A5%EF%BC%9A">计算隐藏层神经元 $ h_1 $ 的总净输入：<a class="anchor-link" href="#%E8%AE%A1%E7%AE%97%E9%9A%90%E8%97%8F%E5%B1%82%E7%A5%9E%E7%BB%8F%E5%85%83-$-h_1-$-%E7%9A%84%E6%80%BB%E5%87%80%E8%BE%93%E5%85%A5%EF%BC%9A">¶</a></h3><p>$$
 \text{net}_{h_1} = w_1 \cdot i_1 + w_2 \cdot i_2 + b_1 \cdot 1
-$$<p>代入具体数值：</p>
-$$
+$$</p>
+<p>代入具体数值：</p>
+<p>$$
 \text{net}_{h_1} = 0.15 \cdot 0.05 + 0.2 \cdot 0.1 + 0.35 \cdot 1 = 0.3775
-$$<p>然后使用逻辑函数（Sigmoid）对其进行压缩，以获得 $ h_1 $ 的输出：</p>
-$$
+$$</p>
+<p>然后使用逻辑函数（Sigmoid）对其进行压缩，以获得 $ h_1 $ 的输出：</p>
+<p>$$
 \text{out}_{h_1} = \frac{1}{1 + e^{-\text{net}_{h_1}}} = \frac{1}{1 + e^{-0.3775}} \approx 0.593269992
-$$<h3 id="%E5%AF%B9-$-h_2-$-%E6%89%A7%E8%A1%8C%E7%9B%B8%E5%90%8C%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%9A">对 $ h_2 $ 执行相同的过程：<a class="anchor-link" href="#%E5%AF%B9-$-h_2-$-%E6%89%A7%E8%A1%8C%E7%9B%B8%E5%90%8C%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%9A">¶</a></h3>$$
+$$</p>
+<h3 id="%E5%AF%B9-$-h_2-$-%E6%89%A7%E8%A1%8C%E7%9B%B8%E5%90%8C%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%9A">对 $ h_2 $ 执行相同的过程：<a class="anchor-link" href="#%E5%AF%B9-$-h_2-$-%E6%89%A7%E8%A1%8C%E7%9B%B8%E5%90%8C%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%9A">¶</a></h3><p>$$
 \text{out}_{h_2} = 0.596884378
-$$<hr/>
+$$</p>
+<hr/>
 <h3 id="%E8%BE%93%E5%87%BA%E5%B1%82%E7%A5%9E%E7%BB%8F%E5%85%83-$-o_1-$-%E7%9A%84%E8%AE%A1%E7%AE%97">输出层神经元 $ o_1 $ 的计算<a class="anchor-link" href="#%E8%BE%93%E5%87%BA%E5%B1%82%E7%A5%9E%E7%BB%8F%E5%85%83-$-o_1-$-%E7%9A%84%E8%AE%A1%E7%AE%97">¶</a></h3><p>使用隐藏层神经元的输出作为输入，计算 $ o_1 $ 的总净输入：</p>
-$$
+<p>$$
 \text{net}_{o_1} = w_5 \cdot \text{out}_{h_1} + w_6 \cdot \text{out}_{h_2} + b_2 \cdot 1
-$$<p>代入数值：</p>
-$$
+$$</p>
+<p>代入数值：</p>
+<p>$$
 \text{net}_{o_1} = 0.4 \cdot 0.593269992 + 0.45 \cdot 0.596884378 + 0.6 \cdot 1 = 1.105905967
-$$<p>应用 Sigmoid 激活函数得到输出：</p>
-$$
+$$</p>
+<p>应用 Sigmoid 激活函数得到输出：</p>
+<p>$$
 \text{out}_{o_1} = \frac{1}{1 + e^{-\text{net}_{o_1}}} = \frac{1}{1 + e^{-1.105905967}} \approx 0.75136507
-$$<h3 id="%E5%AF%B9-$-o_2-$-%E6%89%A7%E8%A1%8C%E7%9B%B8%E5%90%8C%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%9A">对 $ o_2 $ 执行相同的过程：<a class="anchor-link" href="#%E5%AF%B9-$-o_2-$-%E6%89%A7%E8%A1%8C%E7%9B%B8%E5%90%8C%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%9A">¶</a></h3>$$
+$$</p>
+<h3 id="%E5%AF%B9-$-o_2-$-%E6%89%A7%E8%A1%8C%E7%9B%B8%E5%90%8C%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%9A">对 $ o_2 $ 执行相同的过程：<a class="anchor-link" href="#%E5%AF%B9-$-o_2-$-%E6%89%A7%E8%A1%8C%E7%9B%B8%E5%90%8C%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%9A">¶</a></h3><p>$$
 \text{out}_{o_2} = 0.772928465
-$$<hr/>
+$$</p>
+<hr/>
 <h2 id="%E6%80%BB%E8%AF%AF%E5%B7%AE%E8%AE%A1%E7%AE%97">总误差计算<a class="anchor-link" href="#%E6%80%BB%E8%AF%AF%E5%B7%AE%E8%AE%A1%E7%AE%97">¶</a></h2><p>使用均方误差（MSE）公式计算总误差：</p>
-$$
+<p>$$
 E_{\text{total}} = \sum \frac{1}{2} (\text{target} - \text{output})^2
-$$<p>例如，$ o_1 $ 的目标输出为 0.01，但网络实际输出为 0.75136507，因此其误差为：</p>
-$$
+$$</p>
+<p>例如，$ o_1 $ 的目标输出为 0.01，但网络实际输出为 0.75136507，因此其误差为：</p>
+<p>$$
 E_{o_1} = \frac{1}{2} (\text{target}_{o_1} - \text{out}_{o_1})^2 = \frac{1}{2} (0.01 - 0.75136507)^2 \approx 0.274811083
-$$<blockquote>
+$$</p>
+<blockquote>
 <p><strong>说明</strong>：</p>
 <ul>
 <li>本部分展示了前馈神经网络中从输入到输出的完整前向传播过程。</li>
@@ -7591,21 +7602,25 @@ $$<blockquote>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%EF%BC%9A%E8%AF%AF%E5%B7%AE%E8%AE%A1%E7%AE%97%E4%B8%8E%E6%A2%AF%E5%BA%A6%E6%8E%A8%E5%AF%BC">反向传播：误差计算与梯度推导<a class="anchor-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%EF%BC%9A%E8%AF%AF%E5%B7%AE%E8%AE%A1%E7%AE%97%E4%B8%8E%E6%A2%AF%E5%BA%A6%E6%8E%A8%E5%AF%BC">¶</a></h2><h3 id="%E8%BE%93%E5%87%BA%E5%B1%82-$-o_2-$-%E7%9A%84%E8%AF%AF%E5%B7%AE%E8%AE%A1%E7%AE%97">输出层 $ o_2 $ 的误差计算<a class="anchor-link" href="#%E8%BE%93%E5%87%BA%E5%B1%82-$-o_2-$-%E7%9A%84%E8%AF%AF%E5%B7%AE%E8%AE%A1%E7%AE%97">¶</a></h3><p>对 $ o_2 $ 重复相同的过程（记住目标输出为 0.99），得：</p>
-$$
+<p>$$
 E_{o_2} = 0.023560026
-$$<p>神经网络的总误差是两个输出误差的和：</p>
-$$
+$$</p>
+<p>神经网络的总误差是两个输出误差的和：</p>
+<p>$$
 E_{\text{total}} = E_{o_1} + E_{o_2} = 0.274811083 + 0.023560026 = 0.298371109
-$$<p>使用反向传播的目标是更新网络中每个权重，使实际输出更接近目标输出，从而最大限度地减少每个输出神经元和整个网络的误差。</p>
+$$</p>
+<p>使用反向传播的目标是更新网络中每个权重，使实际输出更接近目标输出，从而最大限度地减少每个输出神经元和整个网络的误差。</p>
 <hr/>
 <h3 id="%E6%B1%82%E5%81%8F%E5%AF%BC%E6%95%B0%EF%BC%9A%E7%90%86%E8%A7%A3%E6%9D%83%E9%87%8D%E5%8F%98%E5%8C%96%E5%AF%B9%E8%AF%AF%E5%B7%AE%E7%9A%84%E5%BD%B1%E5%93%8D">求偏导数：理解权重变化对误差的影响<a class="anchor-link" href="#%E6%B1%82%E5%81%8F%E5%AF%BC%E6%95%B0%EF%BC%9A%E7%90%86%E8%A7%A3%E6%9D%83%E9%87%8D%E5%8F%98%E5%8C%96%E5%AF%B9%E8%AF%AF%E5%B7%AE%E7%9A%84%E5%BD%B1%E5%93%8D">¶</a></h3><p>我们想知道权重 $ w_5 $ 的变化对总误差的影响有多大，即计算：</p>
-$$
+<p>$$
 \frac{\partial E_{\text{total}}}{\partial w_5}
-$$<p>该表达式读作“关于 $ w_5 $ 的 $ E_{\text{total}} $ 的偏导数”，也称为“关于 $ w_5 $ 的梯度”。</p>
+$$</p>
+<p>该表达式读作“关于 $ w_5 $ 的 $ E_{\text{total}} $ 的偏导数”，也称为“关于 $ w_5 $ 的梯度”。</p>
 <p>通过应用复合函数求导的<strong>链式法则</strong>，可以得到：</p>
-$$
+<p>$$
 \frac{\partial E_{\text{total}}}{\partial w_5} = \frac{\partial E_{\text{total}}}{\partial \text{out}_{o_1}} \cdot \frac{\partial \text{out}_{o_1}}{\partial \text{net}_{o_1}} \cdot \frac{\partial \text{net}_{o_1}}{\partial w_5}
-$$<hr/>
+$$</p>
+<hr/>
 <h3 id="%E5%9B%BE3-3%EF%BC%9A$-E_%7B%5Ctext%7Btotal%7D%7D-$-%E5%AF%B9-$-w_5-$-%E6%B1%82%E5%81%8F%E5%AF%BC%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96">图3-3：$ E_{\text{total}} $ 对 $ w_5 $ 求偏导的可视化<a class="anchor-link" href="#%E5%9B%BE3-3%EF%BC%9A$-E_%7B%5Ctext%7Btotal%7D%7D-$-%E5%AF%B9-$-w_5-$-%E6%B1%82%E5%81%8F%E5%AF%BC%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96">¶</a></h3><p><img alt="图3-3 $ E_{\text{total}} $ 对 $ w_5 $ 求偏导" src="screenshot/%E5%9B%BE3-3.png"/></p>
 <blockquote>
 <p><strong>图3-3</strong> $ E_{\text{total}} $ 对 $ w_5 $ 求偏导数<br/>
@@ -7614,15 +7629,18 @@ $$<hr/>
 <p>我们需要找出这个方程中的每一部分。</p>
 <hr/>
 <h3 id="%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E6%80%BB%E8%AF%AF%E5%B7%AE%E7%9B%B8%E5%AF%B9%E4%BA%8E%E8%BE%93%E5%87%BA%E7%9A%84%E5%8F%98%E5%8C%96%E7%8E%87">第一步：总误差相对于输出的变化率<a class="anchor-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E6%80%BB%E8%AF%AF%E5%B7%AE%E7%9B%B8%E5%AF%B9%E4%BA%8E%E8%BE%93%E5%87%BA%E7%9A%84%E5%8F%98%E5%8C%96%E7%8E%87">¶</a></h3><p>总误差函数为：</p>
-$$
+<p>$$
 E_{\text{total}} = \frac{1}{2}(\text{target}_{o_1} - \text{out}_{o_1})^2 + \frac{1}{2}(\text{target}_{o_2} - \text{out}_{o_2})^2
-$$<p>对 $ \text{out}_{o_1} $ 求偏导：</p>
-$$
+$$</p>
+<p>对 $ \text{out}_{o_1} $ 求偏导：</p>
+<p>$$
 \frac{\partial E_{\text{total}}}{\partial \text{out}_{o_1}} = 2 \cdot \frac{1}{2} (\text{target}_{o_1} - \text{out}_{o_1})^{-1} \cdot (-1) + 0 = -(\text{target}_{o_1} - \text{out}_{o_1})
-$$<p>代入数值（$ \text{target}_{o_1} = 0.01 $, $ \text{out}_{o_1} = 0.75136507 $）：</p>
-$$
+$$</p>
+<p>代入数值（$ \text{target}_{o_1} = 0.01 $, $ \text{out}_{o_1} = 0.75136507 $）：</p>
+<p>$$
 \frac{\partial E_{\text{total}}}{\partial \text{out}_{o_1}} = -(0.01 - 0.75136507) = 0.74136507
-$$<blockquote>
+$$</p>
+<blockquote>
 <p>✅ 这表示：如果输出 $ \text{out}_{o_1} $ 增加一点，总误差会减少，因此应增大 $ \text{out}_{o_1} $ 来降低误差。</p>
 </blockquote>
 <hr/>
@@ -7643,45 +7661,55 @@ $$<blockquote>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%A2%AF%E5%BA%A6%E5%B9%B6%E6%9B%B4%E6%96%B0%E6%9D%83%E9%87%8D%EF%BC%88%E7%BB%AD%EF%BC%89">反向传播：计算梯度并更新权重（续）<a class="anchor-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%A2%AF%E5%BA%A6%E5%B9%B6%E6%9B%B4%E6%96%B0%E6%9D%83%E9%87%8D%EF%BC%88%E7%BB%AD%EF%BC%89">¶</a></h2><h3 id="1.-%E5%85%B3%E4%BA%8E-$-%5Ctext%7Bout%7D_%7Bo_1%7D-$-%E7%9A%84%E5%81%8F%E5%AF%BC%E6%95%B0%E5%88%86%E6%9E%90">1. 关于 $ \text{out}_{o_1} $ 的偏导数分析<a class="anchor-link" href="#1.-%E5%85%B3%E4%BA%8E-$-%5Ctext%7Bout%7D_%7Bo_1%7D-$-%E7%9A%84%E5%81%8F%E5%AF%BC%E6%95%B0%E5%88%86%E6%9E%90">¶</a></h3><p>当对 $ \text{out}_{o_1} $ 求总误差的偏导数时，项：</p>
-$$
+<p>$$
 \frac{1}{2}(\text{target}_{o_2} - \text{out}_{o_2})^2
-$$<p>变为零，因为 $ \text{out}_{o_1} $ 不会影响 $ \text{out}_{o_2} $。这意味着我们正在对一个常数求导，结果为 0。</p>
+$$</p>
+<p>变为零，因为 $ \text{out}_{o_1} $ 不会影响 $ \text{out}_{o_2} $。这意味着我们正在对一个常数求导，结果为 0。</p>
 <hr/>
 <h3 id="2.-%E8%BE%93%E5%87%BA%E7%9B%B8%E5%AF%B9%E4%BA%8E%E5%87%80%E8%BE%93%E5%85%A5%E7%9A%84%E5%8F%98%E5%8C%96%E7%8E%87%EF%BC%9ASigmoid-%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%BC%E6%95%B0">2. 输出相对于净输入的变化率：Sigmoid 函数的导数<a class="anchor-link" href="#2.-%E8%BE%93%E5%87%BA%E7%9B%B8%E5%AF%B9%E4%BA%8E%E5%87%80%E8%BE%93%E5%85%A5%E7%9A%84%E5%8F%98%E5%8C%96%E7%8E%87%EF%BC%9ASigmoid-%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%BC%E6%95%B0">¶</a></h3><p>接下来，考虑输出 $ o_1 $ 相对于其总净输入 $ \text{net}_{o_1} $ 的变化率。</p>
 <p>逻辑函数（Sigmoid）定义为：</p>
-$$
+<p>$$
 \text{out}_{o_1} = \frac{1}{1 + e^{-\text{net}_{o_1}}}
-$$<p>其导数为：</p>
-$$
+$$</p>
+<p>其导数为：</p>
+<p>$$
 \frac{\partial \text{out}_{o_1}}{\partial \text{net}_{o_1}} = \text{out}_{o_1} (1 - \text{out}_{o_1})
-$$<p>代入数值 $ \text{out}_{o_1} = 0.75136507 $：</p>
-$$
+$$</p>
+<p>代入数值 $ \text{out}_{o_1} = 0.75136507 $：</p>
+<p>$$
 \frac{\partial \text{out}_{o_1}}{\partial \text{net}_{o_1}} = 0.75136507 \times (1 - 0.75136507) = 0.186815602
-$$<blockquote>
+$$</p>
+<blockquote>
 <p>✅ 这表示：$ \text{net}_{o_1} $ 增加一点，$ \text{out}_{o_1} $ 将以该斜率增长。</p>
 </blockquote>
 <hr/>
 <h3 id="3.-%E6%80%BB%E5%87%80%E8%BE%93%E5%85%A5%E7%9B%B8%E5%AF%B9%E4%BA%8E%E6%9D%83%E9%87%8D-$-w_5-$-%E7%9A%84%E5%8F%98%E5%8C%96%E7%8E%87">3. 总净输入相对于权重 $ w_5 $ 的变化率<a class="anchor-link" href="#3.-%E6%80%BB%E5%87%80%E8%BE%93%E5%85%A5%E7%9B%B8%E5%AF%B9%E4%BA%8E%E6%9D%83%E9%87%8D-$-w_5-$-%E7%9A%84%E5%8F%98%E5%8C%96%E7%8E%87">¶</a></h3><p>最后，考虑 $ \text{net}_{o_1} $ 相对于 $ w_5 $ 的变化：</p>
-$$
+<p>$$
 \text{net}_{o_1} = w_5 \cdot \text{out}_{h_1} + w_6 \cdot \text{out}_{h_2} + b_2 \cdot 1
-$$<p>对其求偏导：</p>
-$$
+$$</p>
+<p>对其求偏导：</p>
+<p>$$
 \frac{\partial \text{net}_{o_1}}{\partial w_5} = 1 \cdot \text{out}_{h_1} \cdot w_5^{(1-1)} + 0 + 0 = \text{out}_{h_1}
-$$<p>代入 $ \text{out}_{h_1} = 0.593269992 $：</p>
-$$
+$$</p>
+<p>代入 $ \text{out}_{h_1} = 0.593269992 $：</p>
+<p>$$
 \frac{\partial \text{net}_{o_1}}{\partial w_5} = 0.593269992
-$$<hr/>
+$$</p>
+<hr/>
 <h3 id="4.-%E7%BB%BC%E5%90%88%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99%E8%AE%A1%E7%AE%97%E6%80%BB%E6%A2%AF%E5%BA%A6">4. 综合链式法则计算总梯度<a class="anchor-link" href="#4.-%E7%BB%BC%E5%90%88%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99%E8%AE%A1%E7%AE%97%E6%80%BB%E6%A2%AF%E5%BA%A6">¶</a></h3><p>将三部分相乘，得到总误差对 $ w_5 $ 的偏导数：</p>
-$$
+<p>$$
 \frac{\partial E_{\text{total}}}{\partial w_5} = \frac{\partial E_{\text{total}}}{\partial \text{out}_{o_1}} \cdot \frac{\partial \text{out}_{o_1}}{\partial \text{net}_{o_1}} \cdot \frac{\partial \text{net}_{o_1}}{\partial w_5}
-$$<p>代入数值：</p>
-$$
+$$</p>
+<p>代入数值：</p>
+<p>$$
 \frac{\partial E_{\text{total}}}{\partial w_5} = 0.74136507 \times 0.186815602 \times 0.593269992 \approx 0.082167041
-$$<hr/>
+$$</p>
+<hr/>
 <h3 id="5.-%E6%9B%B4%E6%96%B0%E6%9D%83%E9%87%8D-$-w_5-$">5. 更新权重 $ w_5 $<a class="anchor-link" href="#5.-%E6%9B%B4%E6%96%B0%E6%9D%83%E9%87%8D-$-w_5-$">¶</a></h3><p>为了减少误差，从当前权重中减去这个梯度值（可选地乘以学习率 $ \eta $，合理的学习率可以使优化器快速收敛。一般在训练初期给予较大的学习率，随着训练的进行，学习率逐渐减小。）这里设置学习率为 0.5：</p>
-$$
+<p>$$
 w_5^+ = w_5 - \eta \cdot \frac{\partial E_{\text{total}}}{\partial w_5} = 0.4 - 0.5 \times 0.082167041 = 0.35891648
-$$<blockquote>
+$$</p>
+<blockquote>
 <p>✅ 新的权重 $ w_5 $ 为 <strong>0.35891648</strong>，这将使网络输出更接近目标。</p>
 </blockquote>
 <hr/>
@@ -7705,13 +7733,16 @@ $$<blockquote>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%EF%BC%9A%E6%9B%B4%E6%96%B0%E9%9A%90%E8%97%8F%E5%B1%82%E6%9D%83%E9%87%8D">反向传播：更新隐藏层权重<a class="anchor-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%EF%BC%9A%E6%9B%B4%E6%96%B0%E9%9A%90%E8%97%8F%E5%B1%82%E6%9D%83%E9%87%8D">¶</a></h2><h3 id="1.-%E8%BE%93%E5%87%BA%E5%B1%82%E6%9D%83%E9%87%8D%E6%9B%B4%E6%96%B0%E7%BB%93%E6%9E%9C">1. 输出层权重更新结果<a class="anchor-link" href="#1.-%E8%BE%93%E5%87%BA%E5%B1%82%E6%9D%83%E9%87%8D%E6%9B%B4%E6%96%B0%E7%BB%93%E6%9E%9C">¶</a></h3><p>在完成对输出层权重 $ w_5, w_6, w_7, w_8 $ 的梯度计算与更新后，得到新的权重值：</p>
-$$
+<p>$$
 w_6^+ = 0.408666186
-$$$$
+$$
+$$
 w_7^+ = 0.511301270
-$$$$
+$$
+$$
 w_8^+ = 0.561370121
-$$<blockquote>
+$$</p>
+<blockquote>
 <p>✅ 这些是经过一次反向传播后更新的输出层权重。</p>
 </blockquote>
 <hr/>
@@ -7720,9 +7751,10 @@ $$<blockquote>
 <p>接下来，我们将通过计算 $ w_1, w_2, w_3, w_4 $ 的新值来继续向后传递误差。</p>
 <hr/>
 <h3 id="3.-%E5%AF%B9%E8%BE%93%E5%85%A5%E5%B1%82%E5%88%B0%E9%9A%90%E8%97%8F%E5%B1%82%E6%9D%83%E9%87%8D-$-w_1-$-%E6%B1%82%E5%81%8F%E5%AF%BC">3. 对输入层到隐藏层权重 $ w_1 $ 求偏导<a class="anchor-link" href="#3.-%E5%AF%B9%E8%BE%93%E5%85%A5%E5%B1%82%E5%88%B0%E9%9A%90%E8%97%8F%E5%B1%82%E6%9D%83%E9%87%8D-$-w_1-$-%E6%B1%82%E5%81%8F%E5%AF%BC">¶</a></h3><p>我们要求总误差 $ E_{\text{total}} $ 对权重 $ w_1 $ 的偏导数：</p>
-$$
+<p>$$
 \frac{\partial E_{\text{total}}}{\partial w_1} = \frac{\partial E_{\text{total}}}{\partial \text{out}_{h_1}} \cdot \frac{\partial \text{out}_{h_1}}{\partial \text{net}_{h_1}} \cdot \frac{\partial \text{net}_{h_1}}{\partial w_1}
-$$<p>其中：</p>
+$$</p>
+<p>其中：</p>
 <ul>
 <li>$ \frac{\partial E_{\text{total}}}{\partial \text{out}_{h_1}} $ 表示总误差对隐藏层输出的变化率；</li>
 <li>$ \frac{\partial \text{out}_{h_1}}{\partial \text{net}_{h_1}} $ 是 Sigmoid 函数的导数；</li>
@@ -7740,9 +7772,10 @@ $$<p>其中：</p>
 <li>即：隐藏层神经元 $ h_1 $ 的输出影响两个输出神经元的误差，因此其梯度是两者之和。</li>
 </ul>
 <hr/>
-<h3 id="5.-%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99%E6%8E%A8%E5%AF%BC%E7%BB%93%E6%9E%84">5. 链式法则推导结构<a class="anchor-link" href="#5.-%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99%E6%8E%A8%E5%AF%BC%E7%BB%93%E6%9E%84">¶</a></h3>$$
+<h3 id="5.-%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99%E6%8E%A8%E5%AF%BC%E7%BB%93%E6%9E%84">5. 链式法则推导结构<a class="anchor-link" href="#5.-%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99%E6%8E%A8%E5%AF%BC%E7%BB%93%E6%9E%84">¶</a></h3><p>$$
 \frac{\partial E_{\text{total}}}{\partial w_1} = \underbrace{\frac{\partial E_{\text{total}}}{\partial \text{out}_{h_1}}}_{\text{误差分量}} \cdot \underbrace{\frac{\partial \text{out}_{h_1}}{\partial \text{net}_{h_1}}}_{\text{激活函数导数}} \cdot \underbrace{\frac{\partial \text{net}_{h_1}}{\partial w_1}}_{\text{输入权重影响}}
-$$<p>这与处理输出层的方式类似，但需要考虑隐藏层输出对多个输出神经元的影响。</p>
+$$</p>
+<p>这与处理输出层的方式类似，但需要考虑隐藏层输出对多个输出神经元的影响。</p>
 <hr/>
 <h3 id="6.-%E4%B8%8B%E4%B8%80%E6%AD%A5%E8%AE%A1%E5%88%92">6. 下一步计划<a class="anchor-link" href="#6.-%E4%B8%8B%E4%B8%80%E6%AD%A5%E8%AE%A1%E5%88%92">¶</a></h3><ul>
 <li>计算 $ \frac{\partial E_{\text{total}}}{\partial \text{out}_{h_1}} $，即来自两个输出神经元的误差贡献。</li>
@@ -7764,36 +7797,44 @@ $$<p>这与处理输出层的方式类似，但需要考虑隐藏层输出对多
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%EF%BC%9A%E8%AE%A1%E7%AE%97%E9%9A%90%E8%97%8F%E5%B1%82%E7%A5%9E%E7%BB%8F%E5%85%83%E7%9A%84%E8%AF%AF%E5%B7%AE%E8%B4%A1%E7%8C%AE">反向传播：计算隐藏层神经元的误差贡献<a class="anchor-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%EF%BC%9A%E8%AE%A1%E7%AE%97%E9%9A%90%E8%97%8F%E5%B1%82%E7%A5%9E%E7%BB%8F%E5%85%83%E7%9A%84%E8%AF%AF%E5%B7%AE%E8%B4%A1%E7%8C%AE">¶</a></h2><h3 id="1.-%E9%9A%90%E8%97%8F%E5%B1%82%E8%BE%93%E5%87%BA%E5%AF%B9%E5%A4%9A%E4%B8%AA%E8%BE%93%E5%87%BA%E7%A5%9E%E7%BB%8F%E5%85%83%E7%9A%84%E5%BD%B1%E5%93%8D">1. 隐藏层输出对多个输出神经元的影响<a class="anchor-link" href="#1.-%E9%9A%90%E8%97%8F%E5%B1%82%E8%BE%93%E5%87%BA%E5%AF%B9%E5%A4%9A%E4%B8%AA%E8%BE%93%E5%87%BA%E7%A5%9E%E7%BB%8F%E5%85%83%E7%9A%84%E5%BD%B1%E5%93%8D">¶</a></h3><p>我们知道，隐藏层神经元 $ h_1 $ 的输出 $ \text{out}_{h_1} $ 同时影响两个输出神经元 $ o_1 $ 和 $ o_2 $。因此，在计算总误差对 $ \text{out}_{h_1} $ 的偏导数时，必须考虑其对两个输出的共同影响：</p>
-$$
+<p>$$
 \frac{\partial E_{\text{total}}}{\partial \text{out}_{h_1}} = \frac{\partial E_{o_1}}{\partial \text{out}_{h_1}} + \frac{\partial E_{o_2}}{\partial \text{out}_{h_1}}
-$$<hr/>
+$$</p>
+<hr/>
 <h3 id="2.-%E8%AE%A1%E7%AE%97-$-%5Cfrac%7B%5Cpartial-E_%7Bo_1%7D%7D%7B%5Cpartial-%5Ctext%7Bout%7D_%7Bh_1%7D%7D-$">2. 计算 $ \frac{\partial E_{o_1}}{\partial \text{out}_{h_1}} $<a class="anchor-link" href="#2.-%E8%AE%A1%E7%AE%97-$-%5Cfrac%7B%5Cpartial-E_%7Bo_1%7D%7D%7B%5Cpartial-%5Ctext%7Bout%7D_%7Bh_1%7D%7D-$">¶</a></h3><p>我们从 $ \frac{\partial E_{o_1}}{\partial \text{out}_{h_1}} $ 开始，使用链式法则：</p>
-$$
+<p>$$
 \frac{\partial E_{o_1}}{\partial \text{out}_{h_1}} = \frac{\partial E_{o_1}}{\partial \text{net}_{o_1}} \cdot \frac{\partial \text{net}_{o_1}}{\partial \text{out}_{h_1}}
-$$<p>其中：</p>
+$$</p>
+<p>其中：</p>
 <ul>
 <li>$ \frac{\partial E_{o_1}}{\partial \text{net}_{o_1}} $ 是输出误差对净输入的变化率；</li>
 <li>$ \frac{\partial \text{net}_{o_1}}{\partial \text{out}_{h_1}} $ 是净输入对隐藏层输出的敏感度。</li>
 </ul>
 <hr/>
 <h3 id="3.-%E4%BD%BF%E7%94%A8%E5%B7%B2%E7%9F%A5%E5%80%BC%E8%BF%9B%E8%A1%8C%E6%8E%A8%E5%AF%BC">3. 使用已知值进行推导<a class="anchor-link" href="#3.-%E4%BD%BF%E7%94%A8%E5%B7%B2%E7%9F%A5%E5%80%BC%E8%BF%9B%E8%A1%8C%E6%8E%A8%E5%AF%BC">¶</a></h3><p>首先，回顾之前计算的结果：</p>
-$$
+<p>$$
 \frac{\partial E_{o_1}}{\partial \text{net}_{o_1}} = 0.74136507 \quad \text{(来自 } \frac{\partial E_{\text{total}}}{\partial \text{out}_{o_1}} \text{)}
-$$$$
+$$
+$$
 \frac{\partial \text{out}_{o_1}}{\partial \text{net}_{o_1}} = 0.186815602 \quad \text{(Sigmoid 导数)}
-$$<p>但此处我们需要的是：</p>
-$$
+$$</p>
+<p>但此处我们需要的是：</p>
+<p>$$
 \frac{\partial E_{o_1}}{\partial \text{out}_{h_1}} = \frac{\partial E_{o_1}}{\partial \text{net}_{o_1}} \cdot \frac{\partial \text{net}_{o_1}}{\partial \text{out}_{h_1}}
-$$<p>而：</p>
-$$
+$$</p>
+<p>而：</p>
+<p>$$
 \text{net}_{o_1} = w_5 \cdot \text{out}_{h_1} + w_6 \cdot \text{out}_{h_2} + b_2 \cdot 1
-$$<p>对其求偏导：</p>
-$$
+$$</p>
+<p>对其求偏导：</p>
+<p>$$
 \frac{\partial \text{net}_{o_1}}{\partial \text{out}_{h_1}} = w_5 = 0.40
-$$<p>代入数值：</p>
-$$
+$$</p>
+<p>代入数值：</p>
+<p>$$
 \frac{\partial E_{o_1}}{\partial \text{out}_{h_1}} = 0.74136507 \times 0.186815602 \times 0.40 = 0.055399425
-$$<blockquote>
+$$</p>
+<blockquote>
 <p>✅ 计算得：<br/>
 $$
 \frac{\partial E_{o_1}}{\partial \text{out}_{h_1}} = 0.055399425
@@ -7824,13 +7865,15 @@ $$</p>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%EF%BC%9A%E6%9B%B4%E6%96%B0%E8%BE%93%E5%85%A5%E5%B1%82%E6%9D%83%E9%87%8D%EF%BC%88%E7%BB%AD%EF%BC%89">反向传播：更新输入层权重（续）<a class="anchor-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%EF%BC%9A%E6%9B%B4%E6%96%B0%E8%BE%93%E5%85%A5%E5%B1%82%E6%9D%83%E9%87%8D%EF%BC%88%E7%BB%AD%EF%BC%89">¶</a></h2><h3 id="1.-%E8%AE%A1%E7%AE%97-$-%5Cfrac%7B%5Cpartial-E_%7Bo_2%7D%7D%7B%5Cpartial-%5Ctext%7Bout%7D_%7Bh_1%7D%7D-$">1. 计算 $ \frac{\partial E_{o_2}}{\partial \text{out}_{h_1}} $<a class="anchor-link" href="#1.-%E8%AE%A1%E7%AE%97-$-%5Cfrac%7B%5Cpartial-E_%7Bo_2%7D%7D%7B%5Cpartial-%5Ctext%7Bout%7D_%7Bh_1%7D%7D-$">¶</a></h3><p>已知：</p>
-$$
+<p>$$
 \frac{\partial E_{o_2}}{\partial \text{out}_{h_1}} = -0.019049119
-$$<hr/>
+$$</p>
+<hr/>
 <h3 id="2.-%E6%80%BB%E8%AF%AF%E5%B7%AE%E5%AF%B9-$-%5Ctext%7Bout%7D_%7Bh_1%7D-$-%E7%9A%84%E5%81%8F%E5%AF%BC%E6%95%B0">2. 总误差对 $ \text{out}_{h_1} $ 的偏导数<a class="anchor-link" href="#2.-%E6%80%BB%E8%AF%AF%E5%B7%AE%E5%AF%B9-$-%5Ctext%7Bout%7D_%7Bh_1%7D-$-%E7%9A%84%E5%81%8F%E5%AF%BC%E6%95%B0">¶</a></h3><p>将两个输出神经元的误差贡献相加，得到总误差对隐藏层输出 $ \text{out}_{h_1} $ 的偏导数：</p>
-$$
+<p>$$
 \frac{\partial E_{\text{total}}}{\partial \text{out}_{h_1}} = \frac{\partial E_{o_1}}{\partial \text{out}_{h_1}} + \frac{\partial E_{o_2}}{\partial \text{out}_{h_1}} = 0.055399425 + (-0.019049119) = 0.036350306
-$$<blockquote>
+$$</p>
+<blockquote>
 <p>✅ 得到：
 $$
 \frac{\partial E_{\text{total}}}{\partial \text{out}_{h_1}} = 0.036350306
@@ -7838,15 +7881,18 @@ $$</p>
 </blockquote>
 <hr/>
 <h3 id="3.-%E8%AE%A1%E7%AE%97-$-%5Cfrac%7B%5Cpartial-%5Ctext%7Bout%7D_%7Bh_1%7D%7D%7B%5Cpartial-%5Ctext%7Bnet%7D_%7Bh_1%7D%7D-$">3. 计算 $ \frac{\partial \text{out}_{h_1}}{\partial \text{net}_{h_1}} $<a class="anchor-link" href="#3.-%E8%AE%A1%E7%AE%97-$-%5Cfrac%7B%5Cpartial-%5Ctext%7Bout%7D_%7Bh_1%7D%7D%7B%5Cpartial-%5Ctext%7Bnet%7D_%7Bh_1%7D%7D-$">¶</a></h3><p>使用 Sigmoid 激活函数的导数公式：</p>
-$$
+<p>$$
 \text{out}_{h_1} = \frac{1}{1 + e^{-\text{net}_{h_1}}}
-$$<p>其导数为：</p>
-$$
+$$</p>
+<p>其导数为：</p>
+<p>$$
 \frac{\partial \text{out}_{h_1}}{\partial \text{net}_{h_1}} = \text{out}_{h_1} (1 - \text{out}_{h_1})
-$$<p>代入 $ \text{out}_{h_1} = 0.593269992 $：</p>
-$$
+$$</p>
+<p>代入 $ \text{out}_{h_1} = 0.593269992 $：</p>
+<p>$$
 \frac{\partial \text{out}_{h_1}}{\partial \text{net}_{h_1}} = 0.593269992 \times (1 - 0.593269992) = 0.241300709
-$$<blockquote>
+$$</p>
+<blockquote>
 <p>✅ 得到：
 $$
 \frac{\partial \text{out}_{h_1}}{\partial \text{net}_{h_1}} \approx 0.241300709
@@ -7854,18 +7900,22 @@ $$</p>
 </blockquote>
 <hr/>
 <h3 id="4.-%E8%AE%A1%E7%AE%97-$-%5Cfrac%7B%5Cpartial-%5Ctext%7Bnet%7D_%7Bh_1%7D%7D%7B%5Cpartial-w_1%7D-$">4. 计算 $ \frac{\partial \text{net}_{h_1}}{\partial w_1} $<a class="anchor-link" href="#4.-%E8%AE%A1%E7%AE%97-$-%5Cfrac%7B%5Cpartial-%5Ctext%7Bnet%7D_%7Bh_1%7D%7D%7B%5Cpartial-w_1%7D-$">¶</a></h3><p>隐藏层神经元 $ h_1 $ 的净输入为：</p>
-$$
+<p>$$
 \text{net}_{h_1} = w_1 \cdot i_1 + w_3 \cdot i_2 + b_1 \cdot 1
-$$<p>对其求偏导：</p>
-$$
+$$</p>
+<p>对其求偏导：</p>
+<p>$$
 \frac{\partial \text{net}_{h_1}}{\partial w_1} = i_1 = 0.05
-$$<hr/>
-<h3 id="5.-%E7%BB%BC%E5%90%88%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99%E8%AE%A1%E7%AE%97-$-%5Cfrac%7B%5Cpartial-E_%7B%5Ctext%7Btotal%7D%7D%7D%7B%5Cpartial-w_1%7D-$">5. 综合链式法则计算 $ \frac{\partial E_{\text{total}}}{\partial w_1} $<a class="anchor-link" href="#5.-%E7%BB%BC%E5%90%88%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99%E8%AE%A1%E7%AE%97-$-%5Cfrac%7B%5Cpartial-E_%7B%5Ctext%7Btotal%7D%7D%7D%7B%5Cpartial-w_1%7D-$">¶</a></h3>$$
+$$</p>
+<hr/>
+<h3 id="5.-%E7%BB%BC%E5%90%88%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99%E8%AE%A1%E7%AE%97-$-%5Cfrac%7B%5Cpartial-E_%7B%5Ctext%7Btotal%7D%7D%7D%7B%5Cpartial-w_1%7D-$">5. 综合链式法则计算 $ \frac{\partial E_{\text{total}}}{\partial w_1} $<a class="anchor-link" href="#5.-%E7%BB%BC%E5%90%88%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99%E8%AE%A1%E7%AE%97-$-%5Cfrac%7B%5Cpartial-E_%7B%5Ctext%7Btotal%7D%7D%7D%7B%5Cpartial-w_1%7D-$">¶</a></h3><p>$$
 \frac{\partial E_{\text{total}}}{\partial w_1} = \frac{\partial E_{\text{total}}}{\partial \text{out}_{h_1}} \cdot \frac{\partial \text{out}_{h_1}}{\partial \text{net}_{h_1}} \cdot \frac{\partial \text{net}_{h_1}}{\partial w_1}
-$$<p>代入数值：</p>
-$$
+$$</p>
+<p>代入数值：</p>
+<p>$$
 \frac{\partial E_{\text{total}}}{\partial w_1} = 0.036350306 \times 0.241300709 \times 0.05 \approx 0.000438568
-$$<blockquote>
+$$</p>
+<blockquote>
 <p>✅ 得到：
 $$
 \frac{\partial E_{\text{total}}}{\partial w_1} = 0.000438568
@@ -7873,9 +7923,10 @@ $$</p>
 </blockquote>
 <hr/>
 <h3 id="6.-%E6%9B%B4%E6%96%B0%E6%9D%83%E9%87%8D-$-w_1-$">6. 更新权重 $ w_1 $<a class="anchor-link" href="#6.-%E6%9B%B4%E6%96%B0%E6%9D%83%E9%87%8D-$-w_1-$">¶</a></h3><p>使用学习率 $ \eta = 0.5 $ 进行更新：</p>
-$$
+<p>$$
 w_1^+ = w_1 - \eta \cdot \frac{\partial E_{\text{total}}}{\partial w_1} = 0.15 - 0.5 \times 0.000438568 = 0.149780716
-$$<blockquote>
+$$</p>
+<blockquote>
 <p>✅ 新的权重：
 $$
 w_1^+ = 0.149780716
@@ -7883,9 +7934,10 @@ $$</p>
 </blockquote>
 <hr/>
 <h3 id="7.-%E5%AF%B9%E5%85%B6%E4%BB%96%E8%BE%93%E5%85%A5%E6%9D%83%E9%87%8D%E9%87%8D%E5%A4%8D%E6%93%8D%E4%BD%9C">7. 对其他输入权重重复操作<a class="anchor-link" href="#7.-%E5%AF%B9%E5%85%B6%E4%BB%96%E8%BE%93%E5%85%A5%E6%9D%83%E9%87%8D%E9%87%8D%E5%A4%8D%E6%93%8D%E4%BD%9C">¶</a></h3><p>对 $ w_2, w_3, w_4 $ 重复相同过程，可得：</p>
-$$
+<p>$$
 w_2^+ = 0.19956143
-$$<blockquote>
+$$</p>
+<blockquote>
 <p>🔁 后续步骤将更新所有输入层权重，并继续迭代优化网络。</p>
 </blockquote>
 <hr/>
@@ -7909,11 +7961,13 @@ $$<blockquote>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="%E6%9D%83%E9%87%8D%E6%9B%B4%E6%96%B0%E7%BB%93%E6%9E%9C%E4%B8%8E%E8%AE%AD%E7%BB%83%E6%95%88%E6%9E%9C">权重更新结果与训练效果<a class="anchor-link" href="#%E6%9D%83%E9%87%8D%E6%9B%B4%E6%96%B0%E7%BB%93%E6%9E%9C%E4%B8%8E%E8%AE%AD%E7%BB%83%E6%95%88%E6%9E%9C">¶</a></h2><h3 id="1.-%E8%BE%93%E5%85%A5%E5%B1%82%E6%9D%83%E9%87%8D%E6%9B%B4%E6%96%B0%E7%BB%93%E6%9E%9C">1. 输入层权重更新结果<a class="anchor-link" href="#1.-%E8%BE%93%E5%85%A5%E5%B1%82%E6%9D%83%E9%87%8D%E6%9B%B4%E6%96%B0%E7%BB%93%E6%9E%9C">¶</a></h3><p>在完成反向传播后，得到更新后的输入层权重：</p>
-$$
+<p>$$
 w_3^+ = 0.24975114
-$$$$
+$$
+$$
 w_4^+ = 0.29950229
-$$<hr/>
+$$</p>
+<hr/>
 <h3 id="2.-%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B%E4%B8%8E%E8%AF%AF%E5%B7%AE%E4%B8%8B%E9%99%8D">2. 训练过程与误差下降<a class="anchor-link" href="#2.-%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B%E4%B8%8E%E8%AF%AF%E5%B7%AE%E4%B8%8B%E9%99%8D">¶</a></h3><ul>
 <li><p><strong>初始状态</strong>：当输入为 $ i_1 = 0.05 $、$ i_2 = 0.10 $ 时，网络的总误差为：
 $$

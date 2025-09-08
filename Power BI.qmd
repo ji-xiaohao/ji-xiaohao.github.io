@@ -24,8 +24,11 @@ editor:
 📥 PDF 报告下载：📄 [PowerBI_科创板人工智能企业多案例可视化分析.pdf](PowerBI/PowerBI_科创板人工智能企业多案例可视化分析.pdf)
 
 🖼️ 图表预览：
+
 ![](images\科创板1.png){width=80% fig-align="center"}
+
 ![](images\科创板2.png){width=80% fig-align="center"}
+
 ![](images\科创板3.png){width=80% fig-align="center"}
 
 
@@ -38,7 +41,11 @@ editor:
 📥 PDF 报告下载：📄 [PowerBI_紫金矿业可视化分析.pdf](PowerBI/PowerBI_紫金矿业可视化分析.pdf)
 
 🖼️ 图表预览：
+
 ![](images\紫金1.png){width=80% fig-align="center"}
+
 ![](images\紫金2.png){width=80% fig-align="center"}
+
 ![](images\紫金3.png){width=80% fig-align="center"}
+
 ![](images\紫金4.png){width=80% fig-align="center"}
